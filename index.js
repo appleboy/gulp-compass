@@ -1,6 +1,7 @@
 var es = require('event-stream'),
     gutil = require('gulp-util'),
-    Buffer = require('buffer').Buffer;
+    Buffer = require('buffer').Buffer,
+    compass = require('./lib/compass').init();
 
 module.exports = function(opt){
     function compile(file, cb){
