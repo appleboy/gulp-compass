@@ -21,7 +21,7 @@ $ npm install gulp-compass --save-dev
 
 # Usage
 
-```
+```javascript
 var compass = require('gulp-compass');
 
 gulp.task('compass', function() {
