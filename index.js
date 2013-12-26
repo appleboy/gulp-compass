@@ -6,12 +6,7 @@ var es = require('event-stream'),
 module.exports = function(opt){
     function compile(file, cb){
         var filepath = file.path;
-        compass(filepath, opt, function (error, stdout, stderr) {
-            console.log(stdout);
-            if (error !== null) {
-                gutil.log('exec error: ' + error);
-            }
-        });
+        compass(filepath, opt);
         cb(null, file);
     }
 
