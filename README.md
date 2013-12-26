@@ -89,3 +89,9 @@ One of: nested, expanded, compact, or compressed.
 **default:** your project base
 
 **description:** The location where all your assets are store.
+
+#### logging
+
+**default:** true
+
+**description:** show/hide compile log message.
