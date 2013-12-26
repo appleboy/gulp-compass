@@ -76,13 +76,13 @@ One of: nested, expanded, compact, or compressed.
 
 **default:** css
 
-**description:** The folder inside the project to output css into.
+**description:** The directory where the css stylesheets are kept. It is relative to the ``project`` option.
 
 #### sass
 
 **default:** sass
 
-**description:** The folder inside the project to find sass in.
+**description:** The directory where the sass stylesheets are kept. It is relative to the ``project`` option.
 
 #### project
 
