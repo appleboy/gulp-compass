@@ -9,8 +9,10 @@ require('mocha');
 
 describe('gulp-compass', function() {
     describe('compass()', function() {
-        it('compile scss to css', function(done) {
-            var actual, expected;
+        before(function(done){
+            // set time out
+            this.timeout(5000);
+
             compass(path.join(__dirname, 'sass/compile.scss'), {
                 project: __dirname,
                 style: 'compressed',
@@ -25,6 +27,15 @@ describe('gulp-compass', function() {
                 sass: 'sass'
             });
 
+            setTimeout(function(){
+                // wait compass compile css time
+                done();
+            }, 2000);
+        });
+
+        it('compile scss to css', function() {
+            var actual, expected;
+
             actual = grunt.file.read(path.join(__dirname, 'css/compile.css'));
             expected = grunt.file.read(path.join(__dirname, 'expected/compile.css'));
             actual.should.equal(expected);
@@ -32,8 +43,6 @@ describe('gulp-compass', function() {
             actual = grunt.file.read(path.join(__dirname, 'css/simple.css'));
             expected = grunt.file.read(path.join(__dirname, 'expected/simple.css'));
             actual.should.equal(expected);
-
-            done();
         });
     });
 });
