@@ -22,7 +22,7 @@ var read_file = function(filepath) {
     }
 };
 
-describe('gulp-compass', function() {
+describe('gulp-compass plugin', function() {
     describe('compass()', function() {
         var process = 0, timer;
         before(function(done){
@@ -30,7 +30,8 @@ describe('gulp-compass', function() {
                 project: __dirname,
                 style: 'compressed',
                 css: 'css',
-                sass: 'sass'
+                sass: 'sass',
+                logging: false
             }, function(code, stdout, stderr){
                 if (code != 0) {
                     throw new Error('compile scss error');
@@ -42,7 +43,8 @@ describe('gulp-compass', function() {
                 project: __dirname,
                 style: 'compressed',
                 css: 'css',
-                sass: 'sass'
+                sass: 'sass',
+                logging: false
             }, function(code, stdout, stderr){
                 if (code != 0) {
                     throw new Error('compile sass error');
@@ -64,6 +66,10 @@ describe('gulp-compass', function() {
             actual = read_file(path.join(__dirname, 'css/compile.css'));
             expected = read_file(path.join(__dirname, 'expected/compile.css'));
             actual.should.equal(expected);
+        });
+
+        it('compile sass to css', function() {
+            var actual, expected;
 
             actual = read_file(path.join(__dirname, 'css/simple.css'));
             expected = read_file(path.join(__dirname, 'expected/simple.css'));
