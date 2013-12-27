@@ -28,9 +28,9 @@ var compass = require('gulp-compass');
 
 gulp.task('compass', function() {
   gulp.src('./src/*.scss')
-    .pipe(compass(
+    .pipe(compass({
         config_file: './config.rb'
-    ));
+    }));
 });
 ```
 
@@ -41,11 +41,11 @@ var compass = require('gulp-compass');
 
 gulp.task('compass', function() {
   gulp.src('./src/*.scss')
-    .pipe(compass(
+    .pipe(compass({
         css: 'app/assets/css',
         sass: 'app/assets/sass',
         image: 'app/assets/images'
-    ));
+    }));
 });
 ```
 
