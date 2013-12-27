@@ -111,3 +111,16 @@ One of: nested, expanded, compact, or compressed.
 **default:** true
 
 **description:** show/hide compile log message.
+
+## Running tests
+
+via Makefile
+
+```
+$ make test
+```
+or
+
+```
+$ npm test
+```
