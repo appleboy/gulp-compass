@@ -35,8 +35,8 @@
   "devDependencies": {
     "mocha": "~1.16.2",
     "should": "~2.1.1",
-    "grunt": "~0.4.2",
-    "which": "~1.0.5"
+    "which": "~1.0.5",
+    "iconv-lite": "~0.2.11"
   },
   "engines": {
     "node": ">=0.8.0"

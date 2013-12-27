@@ -3,9 +3,24 @@ var fs = require('fs'),
     compass = require('../lib/compass'),
     should = require('should'),
     path = require('path'),
-    grunt = require('grunt');
+    iconv = require('iconv-lite');
 
 require('mocha');
+
+var read_file = function(filepath) {
+    var contents;
+    try {
+        contents = fs.readFileSync(String(filepath));
+        contents = iconv.decode(contents, 'utf-8');
+        // Strip any BOM that might exist.
+        if (contents.charCodeAt(0) === 0xFEFF) {
+            contents = contents.substring(1);
+        }
+        return contents;
+    } catch(e) {
+        throw new Error('Unable to read "' + filepath + '" file');
+    }
+};
 
 describe('gulp-compass', function() {
     describe('compass()', function() {
@@ -46,12 +61,12 @@ describe('gulp-compass', function() {
         it('compile scss to css', function() {
             var actual, expected;
 
-            actual = grunt.file.read(path.join(__dirname, 'css/compile.css'));
-            expected = grunt.file.read(path.join(__dirname, 'expected/compile.css'));
+            actual = read_file(path.join(__dirname, 'css/compile.css'));
+            expected = read_file(path.join(__dirname, 'expected/compile.css'));
             actual.should.equal(expected);
 
-            actual = grunt.file.read(path.join(__dirname, 'css/simple.css'));
-            expected = grunt.file.read(path.join(__dirname, 'expected/simple.css'));
+            actual = read_file(path.join(__dirname, 'css/simple.css'));
+            expected = read_file(path.join(__dirname, 'expected/simple.css'));
             actual.should.equal(expected);
         });
     });
