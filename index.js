@@ -12,8 +12,9 @@ module.exports = function(opt){
                     'You need to have Ruby and Compass installed ' +
                     'and in your system PATH for this task to work. ');
             }
+            // excute callback
+            cb(null, file);
         });
-        cb(null, file);
     }
 
     return es.map(compile);
