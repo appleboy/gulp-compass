@@ -1,4 +1,4 @@
-# Gulp compass
+# Gulp compass [![Build Status](https://travis-ci.org/appleboy/gulp-compass.png?branch=master)](https://travis-ci.org/appleboy/gulp-compass)
 
 Compile Sass to CSS using Compass
 
