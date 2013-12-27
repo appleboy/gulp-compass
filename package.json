@@ -31,6 +31,6 @@
   "devDependencies": {
     "mocha": "~1.16.2",
     "should": "~2.1.1",
-    "grunt-cli": "~0.1.11"
+    "grunt": "~0.4.2"
   }
 }
