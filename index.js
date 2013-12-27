@@ -3,10 +3,16 @@ var es = require('event-stream'),
     Buffer = require('buffer').Buffer,
     compass = require('./lib/compass');
 
-module.exports = function(opt, callback){
+module.exports = function(opt){
     function compile(file, cb){
         var filepath = file.path;
-        compass(filepath, opt, callback);
+        compass(filepath, opt, function(code, stdout, stderr){
+            if (code === 127) {
+                throw new Error(
+                    'You need to have Ruby and Compass installed ' +
+                    'and in your system PATH for this task to work. ');
+            }
+        });
         cb(null, file);
     }
 

@@ -11,7 +11,7 @@ describe('gulp-compass', function() {
     describe('compass()', function() {
         var process = 0, timer;
         before(function(done){
-            compass(path.join(__dirname, 'sass/compile.scss'), {
+            compass('sass/compile.scss', {
                 project: __dirname,
                 style: 'compressed',
                 css: 'css',
@@ -23,7 +23,7 @@ describe('gulp-compass', function() {
                 process += 1;
             });
 
-            compass(path.join(__dirname, 'sass/simple.sass'), {
+            compass('sass/simple.sass', {
                 project: __dirname,
                 style: 'compressed',
                 css: 'css',
