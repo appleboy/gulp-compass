@@ -1,6 +1,6 @@
 {
   "name": "gulp-compass",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Compile Compass files",
   "main": "index.js",
   "repository": {
@@ -29,7 +29,8 @@
     "gulp-util": "~2.2.0",
     "dargs": "~0.1.0",
     "async": "~0.2.9",
-    "tmp": "0.0.23"
+    "tmp": "0.0.23",
+    "which": "~1.0.5"
   },
   "devDependencies": {
     "mocha": "~1.16.2",
