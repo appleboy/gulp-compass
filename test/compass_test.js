@@ -9,15 +9,18 @@ require('mocha');
 
 describe('gulp-compass', function() {
     describe('compass()', function() {
+        var process = 0, timer;
         before(function(done){
-            // set time out
-            this.timeout(5000);
-
             compass(path.join(__dirname, 'sass/compile.scss'), {
                 project: __dirname,
                 style: 'compressed',
                 css: 'css',
                 sass: 'sass'
+            }, function(code, stdout, stderr){
+                if (code != 0) {
+                    throw new Error('compile scss error');
+                }
+                process += 1;
             });
 
             compass(path.join(__dirname, 'sass/simple.sass'), {
@@ -25,12 +28,19 @@ describe('gulp-compass', function() {
                 style: 'compressed',
                 css: 'css',
                 sass: 'sass'
+            }, function(code, stdout, stderr){
+                if (code != 0) {
+                    throw new Error('compile sass error');
+                }
+                process += 1;
             });
 
-            setTimeout(function(){
-                // wait compass compile css time
-                done();
-            }, 2000);
+            timer = setInterval(function(){
+                if (process == 2) {
+                    clearInterval(timer);
+                    done();
+                }
+            }, 100);
         });
 
         it('compile scss to css', function() {
