@@ -27,10 +27,10 @@ load your compass ``config.rb`` file.
 var compass = require('gulp-compass');
 
 gulp.task('compass', function() {
-  gulp.src('./src/*.scss')
-    .pipe(compass({
-        config_file: './config.rb'
-    }));
+    gulp.src('./src/*.scss')
+        .pipe(compass({
+            config_file: './config.rb'
+        }));
 });
 ```
 
@@ -41,12 +41,12 @@ var compass = require('gulp-compass'),
     path = require('path');
 
 gulp.task('compass', function() {
-  gulp.src('./src/*.scss')
-    .pipe(compass({
-        project: path.join(__dirname, 'assets'),
-        css: 'css',
-        sass: 'sass'
-    }));
+    gulp.src('./src/*.scss')
+        .pipe(compass({
+            project: path.join(__dirname, 'assets'),
+            css: 'css',
+            sass: 'sass'
+        }));
 });
 ```
 
@@ -56,12 +56,12 @@ set your compass settings.
 var compass = require('gulp-compass');
 
 gulp.task('compass', function() {
-  gulp.src('./src/*.scss')
-    .pipe(compass({
-        css: 'app/assets/css',
-        sass: 'app/assets/sass',
-        image: 'app/assets/images'
-    }));
+    gulp.src('./src/*.scss')
+        .pipe(compass({
+            css: 'app/assets/css',
+            sass: 'app/assets/sass',
+            image: 'app/assets/images'
+        }));
 });
 ```
 
