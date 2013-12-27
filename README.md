@@ -37,14 +37,15 @@ gulp.task('compass', function() {
 set your project path.
 
 ```javascript
-var compass = require('gulp-compass');
+var compass = require('gulp-compass'),
+    path = require('path');
 
 gulp.task('compass', function() {
   gulp.src('./src/*.scss')
     .pipe(compass({
-        project: __dirname + 'public',
-        css: 'assets/css',
-        sass: 'assets/sass'
+        project: path.join(__dirname, 'assets'),
+        css: 'css',
+        sass: 'sass'
     }));
 });
 ```
