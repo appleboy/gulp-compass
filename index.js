@@ -8,9 +8,9 @@ module.exports = function(opt){
         var filepath = file.path;
         compass(filepath, opt, function(code, stdout, stderr){
             if (code === 127) {
-                throw new Error(
+                return cb(new Error(
                     'You need to have Ruby and Compass installed ' +
-                    'and in your system PATH for this task to work. ');
+                    'and in your system PATH for this task to work. '));
             }
             // excute callback
             cb(null, file);
