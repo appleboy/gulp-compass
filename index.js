@@ -1,6 +1,6 @@
+'use strict';
+
 var es = require('event-stream'),
-    gutil = require('gulp-util'),
-    Buffer = require('buffer').Buffer,
     compass = require('./lib/compass');
 
 module.exports = function(opt){
