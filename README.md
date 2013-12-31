@@ -17,6 +17,8 @@ Please refer the [user guide](http://compass-style.org/install/)
 
 ## Installation
 
+Install with [npm](https://npmjs.org/package/gulp-compass)
+
 ```
 $ npm install gulp-compass --save-dev
 ```
