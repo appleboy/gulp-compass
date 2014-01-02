@@ -34,7 +34,8 @@ gulp.task('compass', function() {
     gulp.src('./src/*.scss')
         .pipe(compass({
             config_file: './config.rb'
-        }));
+        }))
+        .pipe(gulp.dest('app/assets/temp'));
 });
 ```
 
@@ -50,14 +51,16 @@ gulp.task('compass', function() {
             project: path.join(__dirname, 'assets'),
             css: 'css',
             sass: 'sass'
-        }));
+        }))
+        .pipe(gulp.dest('app/assets/temp'));
 });
 ```
 
 set your compass settings.
 
 ```javascript
-var compass = require('gulp-compass');
+var compass = require('gulp-compass'),
+    minifyCSS = require('gulp-minify-css');
 
 gulp.task('compass', function() {
     gulp.src('./src/*.scss')
@@ -65,7 +68,9 @@ gulp.task('compass', function() {
             css: 'app/assets/css',
             sass: 'app/assets/sass',
             image: 'app/assets/images'
-        }));
+        }))
+        .pipe(minifyCSS())
+        .pipe(gulp.dest('app/assets/temp'));
 });
 ```
 
