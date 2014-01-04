@@ -101,13 +101,26 @@ One of: nested, expanded, compact, or compressed.
 
 **default:** css
 
-**description:** The directory where the css stylesheets are kept. It is relative to the ``project`` option.
+**description:** The target directory where you keep your css stylesheets. It is relative to the ``project`` option.
 
 #### sass
 
 **default:** sass
 
-**description:** The directory where the sass stylesheets are kept. It is relative to the ``project`` option.
+**description:** The source directory where you keep your sass stylesheets. It is relative to the ``project`` option.
+
+#### javascript
+
+**default:** js
+
+**description:** The directory where you keep your javascripts. It is relative to the ``project`` option.
+
+
+#### font
+
+**default:** font
+
+**description:** The directory where you keep your fonts. It is relative to the ``project`` option.
 
 #### project
 
