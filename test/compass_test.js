@@ -3,6 +3,7 @@ var fs = require('fs'),
     compass = require('../lib/compass'),
     should = require('should'),
     path = require('path'),
+    gutil = require('gulp-util'),
     iconv = require('iconv-lite');
 
 require('mocha');
@@ -24,7 +25,7 @@ var read_file = function(filepath) {
 
 describe('gulp-compass plugin', function() {
     describe('compass()', function() {
-        var process = 0, timer;
+        var process = 0, timer, name_list = [];
         before(function(done){
             compass('sass/compile.scss', {
                 project: __dirname,
@@ -32,10 +33,12 @@ describe('gulp-compass plugin', function() {
                 css: 'css',
                 sass: 'sass',
                 logging: false
-            }, function(code, stdout, stderr){
+            }, function(code, stdout, stderr, new_path){
                 if (code != 0) {
                     throw new Error('compile scss error');
                 }
+                new_path = gutil.replaceExtension(new_path, ".css");
+                name_list.push(path.basename(new_path));
                 process += 1;
             });
 
@@ -45,10 +48,12 @@ describe('gulp-compass plugin', function() {
                 css: 'css',
                 sass: 'sass',
                 logging: false
-            }, function(code, stdout, stderr){
+            }, function(code, stdout, stderr, new_path){
                 if (code != 0) {
                     throw new Error('compile sass error');
                 }
+                new_path = gutil.replaceExtension(new_path, ".css");
+                name_list.push(path.basename(new_path));
                 process += 1;
             });
 
@@ -74,6 +79,11 @@ describe('gulp-compass plugin', function() {
             actual = read_file(path.join(__dirname, 'css/simple.css'));
             expected = read_file(path.join(__dirname, 'expected/simple.css'));
             actual.should.equal(expected);
+        });
+
+        it('output path test array', function() {
+            var expected = ['compile.css', 'simple.css'];
+            name_list.sort().should.eql(expected);
         });
     });
 });
