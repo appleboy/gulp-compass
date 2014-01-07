@@ -1,12 +1,12 @@
 'use strict';
 var fs = require('fs'),
     compass = require('../lib/compass'),
-    should = require('should'),
     path = require('path'),
     gutil = require('gulp-util'),
     iconv = require('iconv-lite');
 
 require('mocha');
+require('should');
 
 var read_file = function(filepath) {
     var contents;
@@ -34,10 +34,10 @@ describe('gulp-compass plugin', function() {
                 sass: 'sass',
                 logging: false
             }, function(code, stdout, stderr, new_path){
-                if (code != 0) {
+                if (+code !== 0) {
                     throw new Error('compile scss error');
                 }
-                new_path = gutil.replaceExtension(new_path, ".css");
+                new_path = gutil.replaceExtension(new_path, '.css');
                 name_list.push(path.basename(new_path));
                 process += 1;
             });
@@ -49,16 +49,16 @@ describe('gulp-compass plugin', function() {
                 sass: 'sass',
                 logging: false
             }, function(code, stdout, stderr, new_path){
-                if (code != 0) {
+                if (+code !== 0) {
                     throw new Error('compile sass error');
                 }
-                new_path = gutil.replaceExtension(new_path, ".css");
+                new_path = gutil.replaceExtension(new_path, '.css');
                 name_list.push(path.basename(new_path));
                 process += 1;
             });
 
             timer = setInterval(function(){
-                if (process == 2) {
+                if (process === 2) {
                     clearInterval(timer);
                     done();
                 }
