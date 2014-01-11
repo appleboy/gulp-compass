@@ -27,7 +27,7 @@ describe('gulp-compass plugin', function() {
     describe('compass()', function() {
         var process = 0, timer, name_list = [];
         before(function(done){
-            compass('sass/compile.scss', {
+            compass(path.join(__dirname, 'sass/compile.scss'), {
                 project: __dirname,
                 style: 'compressed',
                 css: 'css',
@@ -42,7 +42,7 @@ describe('gulp-compass plugin', function() {
                 process += 1;
             });
 
-            compass('sass/simple.sass', {
+            compass(path.join(__dirname, 'sass/simple.sass'), {
                 project: __dirname,
                 style: 'compressed',
                 css: 'css',
@@ -57,7 +57,7 @@ describe('gulp-compass plugin', function() {
                 process += 1;
             });
 
-            compass('sass/base/compile.scss', {
+            compass(path.join(__dirname, 'sass/base/compile.scss'), {
                 project: __dirname,
                 config_file: path.join(__dirname, 'config.rb')
             }, function(code, stdout, stderr, new_path){
@@ -102,8 +102,9 @@ describe('gulp-compass plugin', function() {
         });
 
         it('output path test array', function() {
-            var expected = ['sass/base/compile.css', 'sass/compile.css', 'sass/simple.css'];
+            var expected = ['css/base/compile.css', 'css/compile.css', 'css/simple.css'];
             name_list.sort().should.eql(expected);
         });
+
     });
 });
