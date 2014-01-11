@@ -25,12 +25,12 @@ $ npm install gulp-compass --save-dev
 
 ## Usage
 
-load your compass ``config.rb`` file. Please make sure ``css_dir`` and ``sass_dir`` on ``config.rb`` file.
+load your compass ``config.rb`` file. Please make sure ``css_dir`` and ``sass_dir`` value on ``config.rb`` file.
 
-``css_dir`` default value is ``css``.
-``sass_dir`` default value is ``sass``.
+* ``css_dir`` default value is ``css``.
+* ``sass_dir`` default value is ``sass``.
 
-if the ``css_dir`` value is ``stylesheets``, please add ``css`` key as your define.
+if ``css_dir`` value is ``stylesheets``, please add ``css`` key as your define.
 
 ```javascript
 var compass = require('gulp-compass');
