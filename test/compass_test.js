@@ -25,6 +25,7 @@ var read_file = function(filepath) {
 
 describe('gulp-compass plugin', function() {
     describe('compass()', function() {
+        this.timeout(15000);
         var process = 0, timer, name_list = [];
         before(function(done){
             compass(path.join(__dirname, 'sass/compile.scss'), {
