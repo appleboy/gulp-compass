@@ -140,6 +140,12 @@ One of: nested, expanded, compact, or compressed.
 
 **description:** show/hide compile log message.
 
+#### import_path
+
+**default:** false
+
+**description:** The directory where you keep external Compass plugins or extensions that you would like to make available using the `@import` function. Common use case would be setting this to your `bower_components` directory for example. It is relative to the ``project`` option.
+
 ## Running tests
 
 via Makefile
