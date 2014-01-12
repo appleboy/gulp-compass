@@ -70,8 +70,21 @@ describe('gulp-compass plugin', function() {
                 process += 1;
             });
 
+            compass(path.join(__dirname, 'sass/import.scss'), {
+                project: __dirname,
+                style: 'compressed',
+                import_path: 'bower_components'
+            }, function(code, stdout, stderr, new_path){
+                if (+code !== 0) {
+                    throw new Error('compile scss error with import.scss file');
+                }
+                new_path = gutil.replaceExtension(new_path, '.css');
+                name_list.push(path.relative(__dirname, new_path));
+                process += 1;
+            });
+
             timer = setInterval(function(){
-                if (process === 3) {
+                if (process === 4) {
                     clearInterval(timer);
                     done();
                 }
@@ -102,8 +115,16 @@ describe('gulp-compass plugin', function() {
             actual.should.equal(expected);
         });
 
+        it('test import_path argument', function() {
+            var actual, expected;
+
+            actual = read_file(path.join(__dirname, 'css/import.css'));
+            expected = read_file(path.join(__dirname, 'expected/import.css'));
+            actual.should.equal(expected);
+        });
+
         it('output path test array', function() {
-            var expected = ['css/base/compile.css', 'css/compile.css', 'css/simple.css'];
+            var expected = ['css/base/compile.css', 'css/compile.css', 'css/import.css', 'css/simple.css'];
             name_list.sort().should.eql(expected);
         });
 
