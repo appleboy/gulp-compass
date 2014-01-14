@@ -19,6 +19,13 @@
     "style"
   ],
   "author": "Bo-Yi Wu",
+  "contributors": [
+    {
+      "name": "Mangled Deutz",
+      "email": "dev@webitup.fr",
+      "url": "https://twitter.com/MangledDeutz"
+    }
+  ],
   "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/appleboy/gulp-compass/issues"

@@ -1,24 +1,29 @@
 'use strict';
 
-var es = require('event-stream'),
-    gutil = require('gulp-util'),
-    fs = require('fs'),
-    compass = require('./lib/compass');
+var fs = require('fs');
+var compass = require('./lib/compass');
+var through = require('through2');
+var gutil = require('gulp-util');
+
+var PLUGIN_NAME = 'gulp-compass';
 
 module.exports = function(opt){
-    function compile(file, cb){
+    function compile(file, enc, cb){
         if (file.isNull()) {
-            return cb(null, file);
+            this.push(file);
+            return cb();
         }
+
         if (file.isStream()) {
-            return cb(new Error('gulp-compass: Streaming not supported'));
+            this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
+            return cb();
         }
-        var filepath = file.path;
-        compass(filepath, opt, function(code, stdout, stderr, path){
+
+        compass(file.path, opt, function(code, stdout, stderr, path){
             if (code === 127) {
-                return cb(new Error(
-                    'You need to have Ruby and Compass installed ' +
+                this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'You need to have Ruby and Compass installed ' +
                     'and in your system PATH for this task to work. '));
+                return cb();
             }
             if (code === 42) {
                 // This is a partial, just drop it
@@ -27,9 +32,10 @@ module.exports = function(opt){
             // excute callback
             file.path = gutil.replaceExtension(file.path, '.css');
             file.contents = new Buffer(fs.readFileSync(String(gutil.replaceExtension(path, '.css'))));
-            cb(null, file);
-        });
+            this.push(file);
+            return cb();
+        }.bind(this));
     }
 
-    return es.map(compile);
+    return through.obj(compile);
 };
