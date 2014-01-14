@@ -20,6 +20,10 @@ module.exports = function(opt){
                     'You need to have Ruby and Compass installed ' +
                     'and in your system PATH for this task to work. '));
             }
+            if (code === 42) {
+                // This is a partial, just drop it
+                return cb();
+            }
             // excute callback
             file.path = gutil.replaceExtension(file.path, '.css');
             file.contents = new Buffer(fs.readFileSync(String(gutil.replaceExtension(path, '.css'))));
