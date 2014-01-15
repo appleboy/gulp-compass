@@ -51,6 +51,6 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "gulp mocha"
+    "test": "gulp travis"
   }
 }
