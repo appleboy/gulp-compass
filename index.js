@@ -8,7 +8,7 @@ var gutil = require('gulp-util');
 var PLUGIN_NAME = 'gulp-compass';
 
 module.exports = function(opt){
-    function compile(file, enc, cb){
+    var compile = function(file, enc, cb){
         if (file.isNull()) {
             this.push(file);
             return cb();
@@ -35,7 +35,7 @@ module.exports = function(opt){
             this.push(file);
             return cb();
         }.bind(this));
-    }
+    };
 
     return through.obj(compile);
 };
