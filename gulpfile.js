@@ -7,6 +7,7 @@
     var gulp = require('gulp');
     var map = require('map-stream');
     var jshint = require('gulp-jshint');
+    var mocha = require('gulp-mocha');
 
     /**
     * Helpers
@@ -52,5 +53,10 @@
     gulp.task('hint', commandJsHint(
         ['**/*.js', '!node_modules/**/*']
     ));
+
+    gulp.task('mocha', function () {
+        gulp.src('test/*_test.js')
+            .pipe(mocha({reporter: 'spec'}));
+    });
 
 })();

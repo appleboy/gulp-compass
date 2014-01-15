@@ -41,15 +41,16 @@
     "should": "~2.1.1",
     "which": "~1.0.5",
     "iconv-lite": "~0.2.11",
-    "gulp": "~3.3.2",
     "gulp-jshint": "~1.3.4",
     "jshint-stylish": "~0.1.5",
-    "map-stream": "~0.1.0"
+    "map-stream": "~0.1.0",
+    "gulp": "~3.3.2",
+    "gulp-mocha": "~0.3.0"
   },
   "engines": {
     "node": ">=0.8.0"
   },
   "scripts": {
-    "test": "mocha --reporter spec"
+    "test": "gulp mocha"
   }
 }
