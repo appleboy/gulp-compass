@@ -59,4 +59,6 @@
             .pipe(mocha({reporter: 'spec'}));
     });
 
+    gulp.task('travis', ['hint', 'mocha']);
+
 })();
