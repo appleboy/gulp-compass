@@ -39,7 +39,7 @@ describe('gulp-compass plugin', function() {
                     throw new Error('compile scss error');
                 }
                 new_path = gutil.replaceExtension(new_path, '.css');
-                name_list.push(path.relative(__dirname, new_path));
+                name_list.push(path.relative(__dirname, new_path).replace(/\\/g, '/'));
                 process += 1;
             });
 
@@ -54,7 +54,7 @@ describe('gulp-compass plugin', function() {
                     throw new Error('compile sass error');
                 }
                 new_path = gutil.replaceExtension(new_path, '.css');
-                name_list.push(path.relative(__dirname, new_path));
+                name_list.push(path.relative(__dirname, new_path).replace(/\\/g, '/'));
                 process += 1;
             });
 
@@ -66,7 +66,7 @@ describe('gulp-compass plugin', function() {
                     throw new Error('compile scss error with config.rb file');
                 }
                 new_path = gutil.replaceExtension(new_path, '.css');
-                name_list.push(path.relative(__dirname, new_path));
+                name_list.push(path.relative(__dirname, new_path).replace(/\\/g, '/'));
                 process += 1;
             });
 
@@ -79,7 +79,7 @@ describe('gulp-compass plugin', function() {
                     throw new Error('compile scss error with import.scss file');
                 }
                 new_path = gutil.replaceExtension(new_path, '.css');
-                name_list.push(path.relative(__dirname, new_path));
+                name_list.push(path.relative(__dirname, new_path).replace(/\\/g, '/'));
                 process += 1;
             });
 

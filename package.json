@@ -27,9 +27,6 @@
   "dependencies": {
     "event-stream": "~3.0.20",
     "gulp-util": "~2.2.0",
-    "dargs": "~0.1.0",
-    "async": "~0.2.9",
-    "tmp": "0.0.23",
     "which": "~1.0.5"
   },
   "devDependencies": {
