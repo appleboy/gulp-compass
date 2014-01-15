@@ -1,14 +1,15 @@
 'use strict';
 
-var fs = require('fs');
-var compass = require('./lib/compass');
-var through = require('through2');
-var gutil = require('gulp-util');
+var fs = require('fs'),
+    compass = require('./lib/compass'),
+    through = require('through2'),
+    gutil = require('gulp-util');
 
-var PLUGIN_NAME = 'gulp-compass';
+// Consts
+const PLUGIN_NAME = 'gulp-compass';
 
-module.exports = function(opt){
-    var compile = function(file, enc, cb){
+module.exports = function(opt) {
+    var compile = function(file, enc, cb) {
         if (file.isNull()) {
             this.push(file);
             return cb();
@@ -19,7 +20,7 @@ module.exports = function(opt){
             return cb();
         }
 
-        compass(file.path, opt, function(code, stdout, stderr, path){
+        compass(file.path, opt, function(code, stdout, stderr, path) {
             if (code === 127) {
                 this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'You need to have Ruby and Compass installed ' +
                     'and in your system PATH for this task to work. '));

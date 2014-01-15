@@ -1,19 +1,19 @@
-(function(){
+(function() {
     'use strict';
 
     /**
     * Plugins load
     */
-    var gulp = require('gulp');
-    var map = require('map-stream');
-    var jshint = require('gulp-jshint');
-    var mocha = require('gulp-mocha');
+    var gulp = require('gulp'),
+        map = require('map-stream'),
+        jshint = require('gulp-jshint'),
+        fs = require('fs'),
+        mocha = require('gulp-mocha'),
 
     /**
     * Helpers
     */
-    var fs = require('fs');
-    var readJSON = function(path){
+    readJSON = function(path) {
         var data = fs.readFileSync(path, 'utf8');
         try{
             return JSON.parse(data);
@@ -22,20 +22,15 @@
             replace(/(\/\/.*)/gm, '').
             replace(/([\/][*](?:[^*]*|[*](?=[^\/]))*[*][\/])/g, ''));
         }
-    };
-
-    /**
-    * Configuration files
-    */
-    // var packageJson = readJSON('package.json');
+    },
 
     /**
     * Commanders
     */
-    var reporter = require('jshint-stylish');
-    var jshintRc = readJSON('.jshintrc');
+    reporter = require('jshint-stylish'),
+    jshintRc = readJSON('.jshintrc'),
 
-    var commandJsHint = function(pattern, dontFail){
+    commandJsHint = function(pattern, dontFail) {
         return function() {
             return gulp.src(pattern)
                 .pipe(jshint(jshintRc))
