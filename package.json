@@ -1,6 +1,6 @@
 {
   "name": "gulp-compass",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Compile Compass files",
   "main": "index.js",
   "repository": {
@@ -19,13 +19,6 @@
     "style"
   ],
   "author": "Bo-Yi Wu",
-  "contributors": [
-    {
-      "name": "Mangled Deutz",
-      "email": "dev@webitup.fr",
-      "url": "https://twitter.com/MangledDeutz"
-    }
-  ],
   "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/appleboy/gulp-compass/issues"
