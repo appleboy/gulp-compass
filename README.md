@@ -154,13 +154,6 @@ One of: nested, expanded, compact, or compressed.
 
 ## Running tests
 
-via Makefile
-
-```
-$ make test
-```
-or
-
 ```
 $ npm test
 ```
