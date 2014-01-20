@@ -83,8 +83,21 @@ describe('gulp-compass plugin', function() {
                 process += 1;
             });
 
+            compass(path.join(__dirname, 'sass/require.scss'), {
+                project: __dirname,
+                style: 'compressed',
+                require: 'susy'
+            }, function(code, stdout, stderr, new_path){
+                if (+code !== 0) {
+                    throw new Error('compile scss error with require.scss file');
+                }
+                new_path = gutil.replaceExtension(new_path, '.css');
+                name_list.push(path.relative(__dirname, new_path).replace(/\\/g, '/'));
+                process += 1;
+            });
+
             timer = setInterval(function(){
-                if (process === 4) {
+                if (process === 5) {
                     clearInterval(timer);
                     done();
                 }
@@ -115,7 +128,7 @@ describe('gulp-compass plugin', function() {
             actual.should.equal(expected);
         });
 
-        it('test import_path argument', function() {
+        it('test import_path option', function() {
             var actual, expected;
 
             actual = read_file(path.join(__dirname, 'css/import.css'));
@@ -123,8 +136,16 @@ describe('gulp-compass plugin', function() {
             actual.should.equal(expected);
         });
 
+        it('test require option', function() {
+            var actual, expected;
+
+            actual = read_file(path.join(__dirname, 'css/require.css'));
+            expected = read_file(path.join(__dirname, 'expected/require.css'));
+            actual.should.equal(expected);
+        });
+
         it('output path test array', function() {
-            var expected = ['css/base/compile.css', 'css/compile.css', 'css/import.css', 'css/simple.css'];
+            var expected = ['css/base/compile.css', 'css/compile.css', 'css/import.css', 'css/require.css', 'css/simple.css'];
             name_list.sort().should.eql(expected);
         });
 
