@@ -6,7 +6,7 @@ var fs = require('fs'),
     gutil = require('gulp-util');
 
 // Consts
-const PLUGIN_NAME = 'gulp-compass';
+var PLUGIN_NAME = 'gulp-compass';
 
 module.exports = function(opt) {
     var compile = function(file, enc, cb) {
