@@ -80,6 +80,25 @@ gulp.task('compass', function() {
 });
 ```
 
+Support multiple require option
+
+```javascript
+var compass = require('gulp-compass'),
+    minifyCSS = require('gulp-minify-css');
+
+gulp.task('compass', function() {
+    gulp.src('./src/*.scss')
+        .pipe(compass({
+            css: 'app/assets/css',
+            sass: 'app/assets/sass',
+            image: 'app/assets/images',
+            require: ['susy', 'modular-scale']
+        }))
+        .pipe(minifyCSS())
+        .pipe(gulp.dest('app/assets/temp'));
+});
+```
+
 ## Configuration
 
 ### Configuration Options
@@ -149,6 +168,8 @@ One of: nested, expanded, compact, or compressed.
 #### require
 
 **default:** false
+
+**format:** ``string`` or ``array``
 
 **description:** Require the given Ruby library before running commands. This is used to access Compass plugins without having a project configuration file.
 
