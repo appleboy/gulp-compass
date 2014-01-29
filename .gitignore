@@ -6,3 +6,4 @@ build
 components
 .sass-cache
 test/css
+test/images/*.png
