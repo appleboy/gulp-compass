@@ -25,7 +25,7 @@ var read_file = function(filepath) {
 
 describe('gulp-compass plugin', function() {
     describe('compass()', function() {
-        this.timeout(15000);
+        this.timeout(60000);
         var process = 0, timer, name_list = [];
         before(function(done){
             compass(path.join(__dirname, 'sass/compile.scss'), {
@@ -112,6 +112,19 @@ describe('gulp-compass plugin', function() {
                 process += 1;
             });
 
+            compass(path.join(__dirname, 'sass/multiple-require.scss'), {
+                project: __dirname,
+                style: 'compressed',
+                require: ['susy', 'modular-scale']
+            }, function(code, stdout, stderr, new_path){
+                if (+code !== 0) {
+                    throw new Error('compile scss error with multiple require.scss file');
+                }
+                new_path = gutil.replaceExtension(new_path, '.css');
+                name_list.push(path.relative(__dirname, new_path).replace(/\\/g, '/'));
+                process += 1;
+            });
+
             timer = setInterval(function(){
                 if (process === 6) {
                     clearInterval(timer);
@@ -168,8 +181,16 @@ describe('gulp-compass plugin', function() {
             actual.should.equal(expected);
         });
 
+        it('test multiple require option', function() {
+            var actual, expected;
+
+            actual = read_file(path.join(__dirname, 'css/multiple-require.css'));
+            expected = read_file(path.join(__dirname, 'expected/require.css'));
+            actual.should.equal(expected);
+        });
+
         it('output path test array', function() {
-            var expected = ['css/base/compile.css', 'css/compile.css', 'css/import.css', 'css/require.css', 'css/simple.css', 'css/spriting.css'];
+            var expected = ['css/base/compile.css', 'css/compile.css', 'css/import.css', 'css/multiple-require.css', 'css/require.css', 'css/simple.css', 'css/spriting.css'];
             name_list.sort().should.eql(expected);
         });
 

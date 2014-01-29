@@ -6,4 +6,5 @@ before_install:
     - gem install sass
     - gem install compass
     - gem install susy
+    - gem install modular-scale
     - npm install -g gulp
