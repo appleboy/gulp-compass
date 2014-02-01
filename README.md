@@ -173,6 +173,12 @@ One of: nested, expanded, compact, or compressed.
 
 **description:** Require the given Ruby library before running commands. This is used to access Compass plugins without having a project configuration file.
 
+#### load_all
+
+**default:** false
+
+**description:** Load all the frameworks or extensions found in the FRAMEWORKS_DIR directory.
+
 ## Running tests
 
 ```
