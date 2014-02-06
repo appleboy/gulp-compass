@@ -50,10 +50,9 @@
     ));
 
     gulp.task('mocha', function () {
-        gulp.src('test/*_test.js')
+        return gulp.src('test/*_test.js')
             .pipe(mocha({reporter: 'spec'}));
     });
 
     gulp.task('travis', ['hint', 'mocha']);
-
 })();
