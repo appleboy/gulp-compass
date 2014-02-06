@@ -77,92 +77,92 @@ gulp.task('compass', function() {
 
 #### config_file
 
-Type: ``String``
-Default: ``false``
+Type: `String`
+Default: `false`
 
 Your compass ``config.rb`` file. Using this assumes you'll do all project specific configuration in that file, thus ``logging`` and ``project`` are the only configuration options that will be read.
 
 #### output_style
 
-Type: ``String``
-Default: ``nested``
+Type: `String`
+Default: `nested`
 
 The output style for the compiled css. One of: ``nested``, ``expanded``, ``compact``, or ``compressed``.
 
 #### line_comments
 
-Type: ``Boolean``
-Default: ``true``
+Type: `Boolean`
+Default: `true`
 
 Indicates whether line comments should be added to compiled css that says where the selectors were defined.
 
 #### relative_assets
 
-Type: ``Boolean``
-Default: ``true``
+Type: `Boolean`
+Default: `true`
 
 Indicates whether the compass helper functions should generate relative urls from the generated css to assets, or absolute urls using the http path for that asset type.
 
 #### css_dir
 
-Type: ``String``
-Default: ``css``
+Type: `String`
+Default: `css`
 
 The target directory where you keep your css stylesheets. It is relative to the ``project`` option.
 
 #### sass_dir
 
-Type: ``String``
-Default: ``sass``
+Type: `String`
+Default: `sass`
 
 The source directory where you keep your sass stylesheets. It is relative to the ``project`` option.
 
 #### javascripts_dir
 
-Type: ``String``
-Default: ``javascripts``
+Type: `String`
+Default: `javascripts`
 
 The directory where you keep your javascripts. It is relative to the ``project`` option.
 
 #### fonts_dir
 
-Type: ``String``
-Default: ``font``
+Type: `String`
+Default: `fonts`
 
 The directory where you keep your fonts. It is relative to the ``project`` option.
 
 #### generated_images_dir
 
-Type: ``String``
-Default: ``images``
+Type: `String`
+Default: `images`
 
 The directory where generated images are kept. It is relative to the ``project`` option.
 
 #### project
 
-Type: ``String``
+Type: `String`
 Default: Your project base
 
 Sets the path to the root of the project.
 
 #### logging
 
-Type: ``Boolean``
-Default: ``true``
+Type: `Boolean`
+Default: `true`
 
 Show/hide compile log message.
 
 #### import_path
 
-Type: ``String``
-Default: ``false``
+Type: `String`
+Default: `false`
 
 The directory where you keep external Compass plugins or extensions that you would like to make available using the `@import` function. Common use case would be setting this to your `bower_components` directory for example. It is relative to the ``project`` option.
 
 #### require
 
-Type: ``String`` or ``Array``
-Default: ``false``
+Type: `String | Array`
+Default: `false`
 
 Require the given Ruby library before running commands. This is used to access Compass plugins without having a project configuration file.
 
