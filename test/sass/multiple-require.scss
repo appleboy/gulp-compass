@@ -1,6 +1,8 @@
 @import "susy";
-@import "modular-scale";
+@import "breakpoint";
 
 .page {
-    @include container;
+    @include breakpoint(min-width 400px) {
+        @include container;
+    }
 }

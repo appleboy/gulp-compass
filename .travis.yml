@@ -5,6 +5,6 @@ before_install:
     - gem update --system
     - gem install sass
     - gem install compass
-    - gem install susy
-    - gem install modular-scale
+    - gem install susy --pre
+    - gem install breakpoint
     - npm install -g gulp

@@ -30,9 +30,9 @@ describe('gulp-compass plugin', function() {
         before(function(done){
             compass(path.join(__dirname, 'sass/compile.scss'), {
                 project: __dirname,
-                style: 'compressed',
-                css: 'css',
-                sass: 'sass',
+                output_style: 'compressed',
+                css_dir: 'css',
+                sass_dir: 'sass',
                 logging: false
             }, function(code, stdout, stderr, new_path){
                 if (+code !== 0) {
@@ -45,9 +45,9 @@ describe('gulp-compass plugin', function() {
 
             compass(path.join(__dirname, 'sass/simple.sass'), {
                 project: __dirname,
-                style: 'compressed',
-                css: 'css',
-                sass: 'sass',
+                output_style: 'compressed',
+                css_dir: 'css',
+                sass_dir: 'sass',
                 logging: false
             }, function(code, stdout, stderr, new_path){
                 if (+code !== 0) {
@@ -72,7 +72,7 @@ describe('gulp-compass plugin', function() {
 
             compass(path.join(__dirname, 'sass/import.scss'), {
                 project: __dirname,
-                style: 'compressed',
+                output_style: 'compressed',
                 import_path: 'bower_components'
             }, function(code, stdout, stderr, new_path){
                 if (+code !== 0) {
@@ -85,7 +85,7 @@ describe('gulp-compass plugin', function() {
 
             compass(path.join(__dirname, 'sass/require.scss'), {
                 project: __dirname,
-                style: 'compressed',
+                output_style: 'compressed',
                 require: 'susy'
             }, function(code, stdout, stderr, new_path){
                 if (+code !== 0) {
@@ -98,11 +98,11 @@ describe('gulp-compass plugin', function() {
 
             compass(path.join(__dirname, 'sass/spriting.scss'), {
                 project: __dirname,
-                style: 'compressed',
-                css: 'css',
-                sass: 'sass',
-                image: 'images',
-                relative: true
+                output_style: 'compressed',
+                css_dir: 'css',
+                sass_dir: 'sass',
+                images_dir: 'images',
+                relative_assets: true
             }, function(code, stdout, stderr, new_path){
                 if (+code !== 0) {
                     throw new Error('compile scss error with spriting.scss file');
@@ -112,10 +112,27 @@ describe('gulp-compass plugin', function() {
                 process += 1;
             });
 
+            compass(path.join(__dirname, 'sass/generated_images_dir_spriting.scss'), {
+                project: __dirname,
+                output_style: 'compressed',
+                css_dir: 'css',
+                sass_dir: 'sass',
+                images_dir: 'images',
+                generated_images_dir: 'images/generated',
+                relative_assets: true
+            }, function(code, stdout, stderr, new_path){
+                if (+code !== 0) {
+                    throw new Error('compile scss error with spriting.scss file and generated_images_dir');
+                }
+                new_path = gutil.replaceExtension(new_path, '.css');
+                name_list.push(path.relative(__dirname, new_path).replace(/\\/g, '/'));
+                process += 1;
+            });
+
             compass(path.join(__dirname, 'sass/multiple-require.scss'), {
                 project: __dirname,
-                style: 'compressed',
-                require: ['susy', 'modular-scale']
+                output_style: 'compressed',
+                require: ['susy', 'breakpoint']
             }, function(code, stdout, stderr, new_path){
                 if (+code !== 0) {
                     throw new Error('compile scss error with multiple require.scss file');
@@ -126,7 +143,7 @@ describe('gulp-compass plugin', function() {
             });
 
             timer = setInterval(function(){
-                if (process === 7) {
+                if (process === 8) {
                     clearInterval(timer);
                     done();
                 }
@@ -181,16 +198,24 @@ describe('gulp-compass plugin', function() {
             actual.should.equal(expected);
         });
 
+        it('test spriting with compass and generated images dir', function() {
+            var actual, expected;
+
+            actual = read_file(path.join(__dirname, 'css/generated_images_dir_spriting.css'));
+            expected = read_file(path.join(__dirname, 'expected/generated_images_dir_spriting.css'));
+            actual.should.equal(expected);
+        });
+
         it('test multiple require option', function() {
             var actual, expected;
 
             actual = read_file(path.join(__dirname, 'css/multiple-require.css'));
-            expected = read_file(path.join(__dirname, 'expected/require.css'));
+            expected = read_file(path.join(__dirname, 'expected/multiple-require.css'));
             actual.should.equal(expected);
         });
 
         it('output path test array', function() {
-            var expected = ['css/base/compile.css', 'css/compile.css', 'css/import.css', 'css/multiple-require.css', 'css/require.css', 'css/simple.css', 'css/spriting.css'];
+            var expected = ['css/base/compile.css', 'css/compile.css', 'css/generated_images_dir_spriting.css', 'css/import.css', 'css/multiple-require.css', 'css/require.css', 'css/simple.css', 'css/spriting.css'];
             name_list.sort().should.eql(expected);
         });
 

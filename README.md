@@ -25,12 +25,7 @@ $ npm install gulp-compass --save-dev
 
 ## Usage
 
-load your compass ``config.rb`` file. Please make sure ``css_dir`` and ``sass_dir`` value on ``config.rb`` file.
-
-* ``css_dir`` default value is ``css``.
-* ``sass_dir`` default value is ``sass``.
-
-if ``css_dir`` value is ``stylesheets``, please add ``css`` key as your define.
+Either, load your compass ``config.rb`` file, or configure the project by providing an object.
 
 ```javascript
 var compass = require('gulp-compass');
@@ -38,14 +33,30 @@ var compass = require('gulp-compass');
 gulp.task('compass', function() {
     gulp.src('./src/*.scss')
         .pipe(compass({
-            config_file: './config.rb',
-            css: 'stylesheets'
+            config_file: './config.rb'
         }))
         .pipe(gulp.dest('app/assets/temp'));
 });
 ```
 
-set your project path.
+Use an object to configure your project.
+
+```javascript
+var compass = require('gulp-compass'),
+    minifyCSS = require('gulp-minify-css');
+
+gulp.task('compass', function() {
+    gulp.src('./src/*.scss')
+        .pipe(compass({
+            css_dir: 'stylesheets',
+            line_comments: false
+        }))
+        .pipe(minifyCSS())
+        .pipe(gulp.dest('app/assets/temp'));
+});
+```
+
+Set your project path.
 
 ```javascript
 var compass = require('gulp-compass'),
@@ -55,132 +66,111 @@ gulp.task('compass', function() {
     gulp.src('./src/*.scss')
         .pipe(compass({
             project: path.join(__dirname, 'assets'),
-            css: 'css',
-            sass: 'sass'
+            css_dir: 'css',
+            sass_dir: 'sass'
         }))
-        .pipe(gulp.dest('app/assets/temp'));
-});
-```
-
-set your compass settings.
-
-```javascript
-var compass = require('gulp-compass'),
-    minifyCSS = require('gulp-minify-css');
-
-gulp.task('compass', function() {
-    gulp.src('./src/*.scss')
-        .pipe(compass({
-            css: 'app/assets/css',
-            sass: 'app/assets/sass',
-            image: 'app/assets/images'
-        }))
-        .pipe(minifyCSS())
-        .pipe(gulp.dest('app/assets/temp'));
-});
-```
-
-Support multiple require option
-
-```javascript
-var compass = require('gulp-compass'),
-    minifyCSS = require('gulp-minify-css');
-
-gulp.task('compass', function() {
-    gulp.src('./src/*.scss')
-        .pipe(compass({
-            css: 'app/assets/css',
-            sass: 'app/assets/sass',
-            image: 'app/assets/images',
-            require: ['susy', 'modular-scale']
-        }))
-        .pipe(minifyCSS())
         .pipe(gulp.dest('app/assets/temp'));
 });
 ```
 
 ## Configuration
 
-### Configuration Options
+#### config_file
 
-#### style
+Type: `String`
+Default: `false`
 
-**default:** nested
+Your compass ``config.rb`` file. Using this assumes you'll do all project specific configuration in that file, thus ``logging`` and ``project`` are the only configuration options that will be read.
 
-**description:** The output style for the compiled css.
-One of: nested, expanded, compact, or compressed.
+#### output_style
 
-#### comments
+Type: `String`
+Default: `nested`
 
-**default:** true
+The output style for the compiled css. One of: ``nested``, ``expanded``, ``compact``, or ``compressed``.
 
-**description:** Show line comments or not.
+#### line_comments
 
-#### relative
+Type: `Boolean`
+Default: `true`
 
-**default:** true
+Indicates whether line comments should be added to compiled css that says where the selectors were defined.
 
-**description:** Are assets relative.
+#### relative_assets
 
-#### css
+Type: `Boolean`
+Default: `true`
 
-**default:** css
+Indicates whether the compass helper functions should generate relative urls from the generated css to assets, or absolute urls using the http path for that asset type.
 
-**description:** The target directory where you keep your css stylesheets. It is relative to the ``project`` option.
+#### css_dir
 
-#### sass
+Type: `String`
+Default: `css`
 
-**default:** sass
+The target directory where you keep your css stylesheets. It is relative to the ``project`` option.
 
-**description:** The source directory where you keep your sass stylesheets. It is relative to the ``project`` option.
+#### sass_dir
 
-#### javascript
+Type: `String`
+Default: `sass`
 
-**default:** js
+The source directory where you keep your sass stylesheets. It is relative to the ``project`` option.
 
-**description:** The directory where you keep your javascripts. It is relative to the ``project`` option.
+#### javascripts_dir
 
+Type: `String`
+Default: `javascripts`
 
-#### font
+The directory where you keep your javascripts. It is relative to the ``project`` option.
 
-**default:** font
+#### fonts_dir
 
-**description:** The directory where you keep your fonts. It is relative to the ``project`` option.
+Type: `String`
+Default: `fonts`
+
+The directory where you keep your fonts. It is relative to the ``project`` option.
+
+#### generated_images_dir
+
+Type: `String`
+Default: `images`
+
+The directory where generated images are kept. It is relative to the ``project`` option.
 
 #### project
 
-**default:** your project base
+Type: `String`
+Default: Your project base
 
-**description:** The location where all your assets are store.
+Sets the path to the root of the project.
 
 #### logging
 
-**default:** true
+Type: `Boolean`
+Default: `true`
 
-**description:** show/hide compile log message.
+Show/hide compile log message.
 
 #### import_path
 
-**default:** false
+Type: `String`
+Default: `false`
 
-**description:** The directory where you keep external Compass plugins or extensions that you would like to make available using the `@import` function. Common use case would be setting this to your `bower_components` directory for example. It is relative to the ``project`` option.
+The directory where you keep external Compass plugins or extensions that you would like to make available using the `@import` function. Common use case would be setting this to your `bower_components` directory for example. It is relative to the ``project`` option.
 
 #### require
 
-**default:** false
+Type: `String | Array`
+Default: `false`
 
-**format:** ``string`` or ``array``
-
-**description:** Require the given Ruby library before running commands. This is used to access Compass plugins without having a project configuration file.
-
-#### load_all
-
-**default:** false
-
-**description:** Load all the frameworks or extensions found in the FRAMEWORKS_DIR directory.
+Require the given Ruby library before running commands. This is used to access Compass plugins without having a project configuration file.
 
 ## Running tests
 
 ```
+$ gem install susy
+$ gem install breakpoint
+$ npm install
 $ npm test
 ```
