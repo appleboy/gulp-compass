@@ -114,7 +114,7 @@ describe('gulp-compass plugin', function() {
 
             compass(path.join(__dirname, 'sass/multiple-require.scss'), {
                 project: __dirname,
-                style: 'compressed',
+                output_style: 'compressed',
                 require: ['susy', 'breakpoint']
             }, function(code, stdout, stderr, new_path){
                 if (+code !== 0) {
