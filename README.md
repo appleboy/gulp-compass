@@ -182,5 +182,9 @@ One of: nested, expanded, compact, or compressed.
 ## Running tests
 
 ```
+$ gem install sass
+$ gem install compass
+$ gem install susy
+$ gem install modular-scale
 $ npm test
 ```
