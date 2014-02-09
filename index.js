@@ -30,6 +30,13 @@ module.exports = function(opt) {
                 // This is a partial, just drop it
                 return cb();
             }
+
+            // support error callback
+            if (code !== 0) {
+                this.emit('error', new gutil.PluginError(PLUGIN_NAME, stdout));
+                return cb();
+            }
+
             // excute callback
             file.path = gutil.replaceExtension(file.path, '.css');
             file.contents = new Buffer(fs.readFileSync(String(gutil.replaceExtension(path, '.css'))));
