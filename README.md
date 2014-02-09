@@ -99,6 +99,27 @@ gulp.task('compass', function() {
 });
 ```
 
+Support return the output of the Compass as the callback
+
+```javascript
+var compass = require('gulp-compass'),
+    minifyCSS = require('gulp-minify-css');
+
+gulp.task('compass', function() {
+    gulp.src('./src/*.scss')
+        .pipe(compass({
+            css: 'app/assets/css',
+            sass: 'app/assets/sass',
+            image: 'app/assets/images'
+        }))
+        .on('error', function(err) {
+            // Would like to catch the error here
+        })
+        .pipe(minifyCSS())
+        .pipe(gulp.dest('app/assets/temp'));
+});
+```
+
 ## Configuration
 
 ### Configuration Options
