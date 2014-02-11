@@ -65,7 +65,7 @@ var compass = require('gulp-compass'),
 gulp.task('compass', function() {
     gulp.src('./src/*.scss')
         .pipe(compass({
-            project: path.join(__dirname, 'assets'),
+            project_path: path.join(__dirname, 'assets'),
             css_dir: 'css',
             sass_dir: 'sass'
         }))
@@ -108,40 +108,40 @@ Indicates whether the compass helper functions should generate relative urls fro
 Type: `String`
 Default: `css`
 
-The target directory where you keep your css stylesheets. It is relative to the ``project`` option.
+The target directory where you keep your css stylesheets. It is relative to the ``project_path`` option.
 
 #### sass_dir
 
 Type: `String`
 Default: `sass`
 
-The source directory where you keep your sass stylesheets. It is relative to the ``project`` option.
+The source directory where you keep your sass stylesheets. It is relative to the ``project_path`` option.
 
 #### javascripts_dir
 
 Type: `String`
 Default: `javascripts`
 
-The directory where you keep your javascripts. It is relative to the ``project`` option.
+The directory where you keep your javascripts. It is relative to the ``project_path`` option.
 
 #### fonts_dir
 
 Type: `String`
 Default: `fonts`
 
-The directory where you keep your fonts. It is relative to the ``project`` option.
+The directory where you keep your fonts. It is relative to the ``project_path`` option.
 
 #### generated_images_dir
 
 Type: `String`
 Default: `images`
 
-The directory where generated images are kept. It is relative to the ``project`` option.
+The directory where generated images are kept. It is relative to the ``project_path`` option.
 
-#### project
+#### project_path
 
 Type: `String`
-Default: Your project base
+Default: Your project path
 
 Sets the path to the root of the project.
 
@@ -157,7 +157,7 @@ Show/hide compile log message.
 Type: `String`
 Default: `false`
 
-The directory where you keep external Compass plugins or extensions that you would like to make available using the `@import` function. Common use case would be setting this to your `bower_components` directory for example. It is relative to the ``project`` option.
+The directory where you keep external Compass plugins or extensions that you would like to make available using the `@import` function. Common use case would be setting this to your `bower_components` directory for example. It is relative to the ``project_path`` option.
 
 #### require
 

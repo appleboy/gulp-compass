@@ -29,7 +29,7 @@ describe('gulp-compass plugin', function() {
         var process = 0, timer, name_list = [];
         before(function(done){
             compass(path.join(__dirname, 'sass/compile.scss'), {
-                project: __dirname,
+                project_path: __dirname,
                 output_style: 'compressed',
                 css_dir: 'css',
                 sass_dir: 'sass',
@@ -44,7 +44,7 @@ describe('gulp-compass plugin', function() {
             });
 
             compass(path.join(__dirname, 'sass/simple.sass'), {
-                project: __dirname,
+                project_path: __dirname,
                 output_style: 'compressed',
                 css_dir: 'css',
                 sass_dir: 'sass',
@@ -59,7 +59,7 @@ describe('gulp-compass plugin', function() {
             });
 
             compass(path.join(__dirname, 'sass/base/compile.scss'), {
-                project: __dirname,
+                project_path: __dirname,
                 config_file: path.join(__dirname, 'config.rb')
             }, function(code, stdout, stderr, new_path){
                 if (+code !== 0) {
@@ -71,7 +71,7 @@ describe('gulp-compass plugin', function() {
             });
 
             compass(path.join(__dirname, 'sass/import.scss'), {
-                project: __dirname,
+                project_path: __dirname,
                 output_style: 'compressed',
                 import_path: 'bower_components'
             }, function(code, stdout, stderr, new_path){
@@ -84,7 +84,7 @@ describe('gulp-compass plugin', function() {
             });
 
             compass(path.join(__dirname, 'sass/require.scss'), {
-                project: __dirname,
+                project_path: __dirname,
                 output_style: 'compressed',
                 require: 'susy'
             }, function(code, stdout, stderr, new_path){
@@ -97,7 +97,7 @@ describe('gulp-compass plugin', function() {
             });
 
             compass(path.join(__dirname, 'sass/spriting.scss'), {
-                project: __dirname,
+                project_path: __dirname,
                 output_style: 'compressed',
                 css_dir: 'css',
                 sass_dir: 'sass',
@@ -113,7 +113,7 @@ describe('gulp-compass plugin', function() {
             });
 
             compass(path.join(__dirname, 'sass/generated_images_dir_spriting.scss'), {
-                project: __dirname,
+                project_path: __dirname,
                 output_style: 'compressed',
                 css_dir: 'css',
                 sass_dir: 'sass',
@@ -130,7 +130,7 @@ describe('gulp-compass plugin', function() {
             });
 
             compass(path.join(__dirname, 'sass/multiple-require.scss'), {
-                project: __dirname,
+                project_path: __dirname,
                 output_style: 'compressed',
                 require: ['susy', 'breakpoint']
             }, function(code, stdout, stderr, new_path){
