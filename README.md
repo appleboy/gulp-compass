@@ -200,6 +200,12 @@ One of: nested, expanded, compact, or compressed.
 
 **description:** Load all the frameworks or extensions found in the FRAMEWORKS_DIR directory.
 
+#### bundle_exec
+
+**default:** false
+
+**description:** Run compass compile with [bundle exec](http://bundler.io/v1.5/man/bundle-exec.1.html): bundle exec compass compile.
+
 ## Running tests
 
 ```
