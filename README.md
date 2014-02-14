@@ -204,7 +204,7 @@ One of: nested, expanded, compact, or compressed.
 
 **default:** false
 
-**description:** Run compass compile with [bundle exec](http://bundler.io/v1.5/man/bundle-exec.1.html): bundle exec compass compile.
+**description:** Run compass compile with [bundle exec](http://bundler.io/v1.5/man/bundle-exec.1.html): ``bundle exec compass compile``.
 
 ## Running tests
 
