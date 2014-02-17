@@ -131,13 +131,6 @@ Default: `fonts`
 
 The directory where you keep your fonts. It is relative to the ``project_path`` option.
 
-#### generated_images_dir
-
-Type: `String`
-Default: `images`
-
-The directory where generated images are kept. It is relative to the ``project_path`` option.
-
 #### project_path
 
 Type: `String`
