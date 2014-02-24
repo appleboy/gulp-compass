@@ -27,7 +27,7 @@ $ npm install gulp-compass --save-dev
 
 ### Load config from config.rb
 
-Please make sure to add ``css`` and ``sass`` options with the same value in ``config.rb``.
+Please **make sure** to add ``css`` and ``sass`` options with the same value in ``config.rb``.
 
 * ``css`` default value is ``css``.
 * ``sass`` default value is ``sass``.
