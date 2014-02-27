@@ -33,7 +33,7 @@ module.exports = function(opt) {
 
             // support error callback
             if (code !== 0) {
-                this.emit('error', new gutil.PluginError(PLUGIN_NAME, stdout));
+                this.emit('error', new gutil.PluginError(PLUGIN_NAME, stdout || 'Compass failed'));
                 return cb();
             }
 
