@@ -5,6 +5,6 @@ before_install:
     - gem update --system
     - gem install sass --version 3.2.13
     - gem install compass --version 0.12.3
-    - gem install susy
+    - gem install susy --version 1.0.9
     - gem install modular-scale
     - npm install -g gulp
