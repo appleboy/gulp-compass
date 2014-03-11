@@ -42,7 +42,7 @@ module.exports = function(opt) {
             file.path = gutil.replaceExtension(file.path, '.css');
             file.contents = new Buffer(fs.readFileSync(String(gutil.replaceExtension(path, '.css'))));
             this.push(file);
-            return cb();
+            cb();
         }.bind(this));
     };
 
