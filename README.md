@@ -187,6 +187,8 @@ One of: nested, expanded, compact, or compressed.
 
 **default:** false
 
+**format:** ``string`` or ``array``
+
 **description:** The directory where you keep external Compass plugins or extensions that you would like to make available using the `@import` function. Common use case would be setting this to your `bower_components` directory for example. It is relative to the ``project`` option.
 
 #### require
