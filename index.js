@@ -39,10 +39,13 @@ module.exports = function(opt) {
             }
 
             // excute callback
-            var pathToCss = gutil.replaceExtension(path, '.css')
-              , contents = fs.readFileSync(pathToCss);
+            var pathToCss = gutil.replaceExtension(path, '.css'),
+                contents = fs.readFileSync(pathToCss);
 
-            if (!(contents instanceof Buffer)) { contents = new Buffer(contents) }; // Fix garbled output.
+            // Fix garbled output.
+            if (!(contents instanceof Buffer)) {
+                contents = new Buffer(contents);
+            }
 
             file.path = gutil.replaceExtension(file.path, '.css');
             file.contents = contents;
