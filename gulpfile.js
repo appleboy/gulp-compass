@@ -8,6 +8,7 @@
         map = require('map-stream'),
         jshint = require('gulp-jshint'),
         mocha = require('gulp-mocha'),
+        clean = require('gulp-clean'),
 
     /**
     * Commanders
@@ -32,9 +33,14 @@
         ['**/*.js', '!node_modules/**/*']
     ));
 
-    gulp.task('mocha', function () {
+    gulp.task('mocha', ['clean'], function () {
         return gulp.src('test/*_test.js')
             .pipe(mocha({reporter: 'spec'}));
+    });
+
+    gulp.task('clean', function () {
+        return gulp.src('test/css', {read: false})
+            .pipe(clean());
     });
 
     gulp.task('travis', ['hint', 'mocha']);

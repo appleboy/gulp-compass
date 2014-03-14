@@ -38,7 +38,8 @@
     "jshint-stylish": "~0.1.5",
     "map-stream": "~0.1.0",
     "gulp": "~3.3.2",
-    "gulp-mocha": "~0.3.0"
+    "gulp-mocha": "~0.3.0",
+    "gulp-clean": "~0.2.4"
   },
   "engines": {
     "node": ">=0.10.0"
