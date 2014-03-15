@@ -5,33 +5,16 @@
     * Plugins load
     */
     var gulp = require('gulp'),
-        map = require('map-stream'),
         jshint = require('gulp-jshint'),
         mocha = require('gulp-mocha'),
         clean = require('gulp-clean'),
+        reporter = require('jshint-stylish');
 
-    /**
-    * Commanders
-    */
-    reporter = require('jshint-stylish'),
-
-    commandJsHint = function(pattern, dontFail) {
-        return function() {
-            return gulp.src(pattern)
-                .pipe(jshint())
-                .pipe(jshint.reporter(reporter))
-                .pipe(map(function (file, cb) {
-                    cb(!dontFail && !file.jshint.success, file);
-                }));
-        };
-    };
-
-    /**
-    * Jshint
-    */
-    gulp.task('hint', commandJsHint(
-        ['**/*.js', '!node_modules/**/*']
-    ));
+    gulp.task('hint', function () {
+        return gulp.src(['**/*.js', '!node_modules/**/*'])
+            .pipe(jshint())
+            .pipe(jshint.reporter(reporter));
+    });
 
     gulp.task('mocha', ['clean'], function () {
         return gulp.src('test/*_test.js')
@@ -43,5 +26,5 @@
             .pipe(clean());
     });
 
-    gulp.task('travis', ['hint', 'mocha']);
+    gulp.task('default', ['hint', 'mocha']);
 })();
