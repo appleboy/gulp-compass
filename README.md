@@ -146,6 +146,12 @@ One of: nested, expanded, compact, or compressed.
 
 **description:** Are assets relative.
 
+#### sourcemap
+
+**default:** false
+
+**description:** Generate standard JSON source maps.
+
 #### css
 
 **default:** css
