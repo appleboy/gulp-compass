@@ -223,6 +223,18 @@ PS. Current compass `0.12.4` version  doesn't support `--sourcemap` flag, please
 * compass (1.0.0.alpha.19)
 ```
 
+#### time
+
+**default:** false
+
+**description:** Display compilation times.
+
+#### debug
+
+**default:** false
+
+**description:** Turns on sass's debuging information.
+
 ## Running tests
 
 ```
