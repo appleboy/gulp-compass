@@ -164,7 +164,6 @@ One of: nested, expanded, compact, or compressed.
 
 **description:** The directory where you keep your javascripts. It is relative to the ``project`` option.
 
-
 #### font
 
 **default:** font
@@ -210,6 +209,19 @@ One of: nested, expanded, compact, or compressed.
 **default:** false
 
 **description:** Run compass compile with [bundle exec](http://bundler.io/v1.5/man/bundle-exec.1.html): ``bundle exec compass compile``.
+
+#### sourcemap
+
+**default:** false
+
+**description:** Generate standard JSON source maps.
+
+PS. Current compass `0.12.4` version  doesn't support `--sourcemap` flag, please update sass and compass as the following version.
+
+```
+* sass (3.3.3)
+* compass (1.0.0.alpha.19)
+```
 
 ## Running tests
 
