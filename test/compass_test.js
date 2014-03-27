@@ -70,6 +70,19 @@ describe('gulp-compass plugin', function() {
                 process += 1;
             });
 
+            compass(path.join(__dirname, 'sass/base/compile2.scss'), {
+                project: __dirname,
+                config_file: path.join(__dirname, 'config.rb'),
+                environment: 'development'
+            }, function(code, stdout, stderr, new_path){
+                if (+code !== 0) {
+                    throw new Error('compile scss error with config.rb file');
+                }
+                new_path = gutil.replaceExtension(new_path, '.css');
+                name_list.push(path.relative(__dirname, new_path).replace(/\\/g, '/'));
+                process += 1;
+            });
+
             compass(path.join(__dirname, 'sass/import.scss'), {
                 project: __dirname,
                 style: 'compressed',
@@ -139,7 +152,7 @@ describe('gulp-compass plugin', function() {
             });
 
             timer = setInterval(function(){
-                if (process === 8) {
+                if (process === 9) {
                     clearInterval(timer);
                     done();
                 }
@@ -210,8 +223,16 @@ describe('gulp-compass plugin', function() {
             actual.should.equal(expected);
         });
 
+        it('test environment option', function() {
+            var actual, expected;
+
+            actual = read_file(path.join(__dirname, 'css/base/compile2.css'));
+            expected = read_file(path.join(__dirname, 'expected/compile2.css'));
+            actual.should.equal(expected);
+        });
+
         it('output path test array', function() {
-            var expected = ['css/base/compile.css', 'css/compile.css', 'css/import.css', 'css/import2.css', 'css/multiple-require.css', 'css/require.css', 'css/simple.css', 'css/spriting.css'];
+            var expected = ['css/base/compile.css', 'css/base/compile2.css', 'css/compile.css', 'css/import.css', 'css/import2.css', 'css/multiple-require.css', 'css/require.css', 'css/simple.css', 'css/spriting.css'];
             name_list.sort().should.eql(expected);
         });
 
