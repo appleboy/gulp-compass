@@ -39,7 +39,7 @@ gulp.task('compass', function() {
     gulp.src('./src/*.scss')
         .pipe(compass({
             config_file: './config.rb',
-            css: 'stylesheets'
+            css: 'stylesheets',
             sass: 'sass'
         }))
         .pipe(gulp.dest('app/assets/temp'));
