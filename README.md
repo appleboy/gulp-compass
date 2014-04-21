@@ -36,13 +36,13 @@ Please **make sure** to add ``css`` and ``sass`` options with the same value in 
 var compass = require('gulp-compass');
 
 gulp.task('compass', function() {
-    gulp.src('./src/*.scss')
-        .pipe(compass({
-            config_file: './config.rb',
-            css: 'stylesheets',
-            sass: 'sass'
-        }))
-        .pipe(gulp.dest('app/assets/temp'));
+  gulp.src('./src/*.scss')
+  .pipe(compass({
+    config_file: './config.rb',
+    css: 'stylesheets',
+    sass: 'sass'
+  }))
+  .pipe(gulp.dest('app/assets/temp'));
 });
 ```
 
@@ -52,16 +52,16 @@ set your project path.
 
 ```javascript
 var compass = require('gulp-compass'),
-    path = require('path');
+  path = require('path');
 
 gulp.task('compass', function() {
-    gulp.src('./src/*.scss')
-        .pipe(compass({
-            project: path.join(__dirname, 'assets'),
-            css: 'css',
-            sass: 'sass'
-        }))
-        .pipe(gulp.dest('app/assets/temp'));
+  gulp.src('./src/*.scss')
+  .pipe(compass({
+    project: path.join(__dirname, 'assets'),
+    css: 'css',
+    sass: 'sass'
+  }))
+  .pipe(gulp.dest('app/assets/temp'));
 });
 ```
 
@@ -69,17 +69,17 @@ set your compass settings.
 
 ```javascript
 var compass = require('gulp-compass'),
-    minifyCSS = require('gulp-minify-css');
+  minifyCSS = require('gulp-minify-css');
 
 gulp.task('compass', function() {
-    gulp.src('./src/*.scss')
-        .pipe(compass({
-            css: 'app/assets/css',
-            sass: 'app/assets/sass',
-            image: 'app/assets/images'
-        }))
-        .pipe(minifyCSS())
-        .pipe(gulp.dest('app/assets/temp'));
+  gulp.src('./src/*.scss')
+  .pipe(compass({
+    css: 'app/assets/css',
+    sass: 'app/assets/sass',
+    image: 'app/assets/images'
+  }))
+  .pipe(minifyCSS())
+  .pipe(gulp.dest('app/assets/temp'));
 });
 ```
 
@@ -87,18 +87,18 @@ Support multiple require option
 
 ```javascript
 var compass = require('gulp-compass'),
-    minifyCSS = require('gulp-minify-css');
+  minifyCSS = require('gulp-minify-css');
 
 gulp.task('compass', function() {
-    gulp.src('./src/*.scss')
-        .pipe(compass({
-            css: 'app/assets/css',
-            sass: 'app/assets/sass',
-            image: 'app/assets/images',
-            require: ['susy', 'modular-scale']
-        }))
-        .pipe(minifyCSS())
-        .pipe(gulp.dest('app/assets/temp'));
+  gulp.src('./src/*.scss')
+  .pipe(compass({
+    css: 'app/assets/css',
+    sass: 'app/assets/sass',
+    image: 'app/assets/images',
+    require: ['susy', 'modular-scale']
+  }))
+  .pipe(minifyCSS())
+  .pipe(gulp.dest('app/assets/temp'));
 });
 ```
 
@@ -106,20 +106,20 @@ Support return the output of the Compass as the callback
 
 ```javascript
 var compass = require('gulp-compass'),
-    minifyCSS = require('gulp-minify-css');
+  minifyCSS = require('gulp-minify-css');
 
 gulp.task('compass', function() {
-    gulp.src('./src/*.scss')
-        .pipe(compass({
-            css: 'app/assets/css',
-            sass: 'app/assets/sass',
-            image: 'app/assets/images'
-        }))
-        .on('error', function(err) {
-            // Would like to catch the error here
-        })
-        .pipe(minifyCSS())
-        .pipe(gulp.dest('app/assets/temp'));
+  gulp.src('./src/*.scss')
+  .pipe(compass({
+    css: 'app/assets/css',
+    sass: 'app/assets/sass',
+    image: 'app/assets/images'
+  }))
+  .on('error', function(err) {
+    // Would like to catch the error here
+  })
+  .pipe(minifyCSS())
+  .pipe(gulp.dest('app/assets/temp'));
 });
 ```
 
