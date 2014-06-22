@@ -1,8 +1,14 @@
-# Gulp compass [![NPM version](https://badge.fury.io/js/gulp-compass.png)](http://badge.fury.io/js/gulp-compass) [![Build Status](https://travis-ci.org/appleboy/gulp-compass.png?branch=master)](https://travis-ci.org/appleboy/gulp-compass)
+# [gulp](http://gulpjs.com/)-compass
+
+[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status](https://travis-ci.org/appleboy/gulp-compass.png?branch=master)](https://travis-ci.org/appleboy/gulp-compass)
 
 [![NPM](https://nodei.co/npm/gulp-compass.png?downloads=true&stars=true)](https://nodei.co/npm/gulp-compass/)
 
 > Compile Sass to CSS using Compass
+
+[npm-url]: https://www.npmjs.org/package/gulp-compass
+[npm-image]: http://img.shields.io/npm/v/gulp-compass.svg
+[downloads-image]: http://img.shields.io/npm/dm/gulp-compass.svg
 
 ## Requirements
 
