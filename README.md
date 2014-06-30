@@ -241,6 +241,10 @@ PS. Current compass `0.12.4` version  doesn't support `--sourcemap` flag, please
 
 **description:** Turns on sass's debuging information.
 
+#### environment
+
+**description:** The environment mode can also be `development` or `production`.
+
 ## Running tests
 
 ```
