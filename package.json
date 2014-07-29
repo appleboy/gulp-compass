@@ -25,21 +25,21 @@
   },
   "homepage": "https://github.com/appleboy/gulp-compass",
   "dependencies": {
-    "gulp-util": "~2.2.10",
-    "which": "~1.0.5",
-    "through2": "~0.4.0"
+    "gulp-util": "^3.0.0",
+    "through2": "^0.5.1",
+    "which": "^1.0.5"
   },
   "devDependencies": {
-    "mocha": "~1.16.2",
-    "should": "~2.1.1",
-    "which": "~1.0.5",
-    "iconv-lite": "~0.2.11",
-    "gulp-jshint": "^1.5.5",
-    "jshint-stylish": "~0.1.5",
-    "map-stream": "~0.1.0",
-    "gulp": "^3.6.2",
-    "gulp-mocha": "^0.4.1",
-    "gulp-clean": "^0.2.4"
+    "gulp": "^3.8.6",
+    "gulp-clean": "^0.2.4",
+    "gulp-jshint": "^1.8.0",
+    "gulp-mocha": "^0.5.2",
+    "iconv-lite": "^0.4.4",
+    "jshint-stylish": "^0.4.0",
+    "map-stream": "^0.1.0",
+    "mocha": "^1.21.3",
+    "should": "^4.0.4",
+    "which": "^1.0.5"
   },
   "engines": {
     "node": ">=0.10.0"
