@@ -165,7 +165,7 @@ describe('gulp-compass plugin', function() {
       });
 
       timer = setInterval(function(){
-        if (process === 9) {
+        if (process === 10) {
           clearInterval(timer);
           done();
         }
