@@ -28,13 +28,13 @@ module.exports = function(opt) {
     compass(file.path, opt, function(code, stdout, stderr, path) {
       if (code === 127) {
         this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'You need to have Ruby and Compass installed ' +
-          'and in your system PATH for this task to work. '));
+          'and in your system PATH for this task to work.'));
         return cb();
       }
 
       // support error callback
       if (code !== 0) {
-        this.emit('error', new gutil.PluginError(PLUGIN_NAME, stdout || 'Compass failed'));
+        this.emit('error', new gutil.PluginError(PLUGIN_NAME, stdout || 'Compass failed', {fileName: file.path}));
         return cb();
       }
 
