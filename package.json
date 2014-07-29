@@ -30,8 +30,8 @@
     "which": "^1.0.5"
   },
   "devDependencies": {
+    "del": "^0.1.1",
     "gulp": "^3.8.6",
-    "gulp-clean": "^0.2.4",
     "gulp-jshint": "^1.8.0",
     "gulp-mocha": "^0.5.2",
     "iconv-lite": "^0.4.4",
