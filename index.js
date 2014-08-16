@@ -12,30 +12,31 @@ var PLUGIN_NAME = 'gulp-compass';
 module.exports = function(opt) {
   var compile = function(file, enc, cb) {
     if (file.isNull()) {
-      this.push(file);
-      return cb();
+      cb(null, file);
+      return;
     }
 
     if (file.isStream()) {
-      this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
-      return cb();
+      cb(new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
+      return;
     }
 
     if (path.basename(file.path)[0] === '_') {
-      return cb();
+      cb(null, file);
+      return;
     }
 
     compass(file.path, opt, function(code, stdout, stderr, path) {
       if (code === 127) {
-        this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'You need to have Ruby and Compass installed ' +
+        cb(new gutil.PluginError(PLUGIN_NAME, 'You need to have Ruby and Compass installed ' +
           'and in your system PATH for this task to work.'));
-        return cb();
+        return;
       }
 
       // support error callback
       if (code !== 0) {
-        this.emit('error', new gutil.PluginError(PLUGIN_NAME, stdout || 'Compass failed', {fileName: file.path}));
-        return cb();
+        cb(new gutil.PluginError(PLUGIN_NAME, stdout || 'Compass failed', {fileName: file.path}));
+        return;
       }
 
       // excute callback
@@ -49,9 +50,8 @@ module.exports = function(opt) {
 
       file.path = gutil.replaceExtension(file.path, '.css');
       file.contents = contents;
-      this.push(file);
-      cb();
-    }.bind(this));
+      cb(null, file);
+    });
   };
 
   return through.obj(compile);
