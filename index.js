@@ -12,31 +12,26 @@ var PLUGIN_NAME = 'gulp-compass';
 module.exports = function(opt) {
   var compile = function(file, enc, cb) {
     if (file.isNull()) {
-      cb(null, file);
-      return;
+      return cb(null, file);
     }
 
     if (file.isStream()) {
-      cb(new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
-      return;
+      return cb(new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
     }
 
     if (path.basename(file.path)[0] === '_') {
-      cb(null, file);
-      return;
+      return cb(null, file);
     }
 
     compass(file.path, opt, function(code, stdout, stderr, path) {
       if (code === 127) {
-        cb(new gutil.PluginError(PLUGIN_NAME, 'You need to have Ruby and Compass installed ' +
+        return cb(new gutil.PluginError(PLUGIN_NAME, 'You need to have Ruby and Compass installed ' +
           'and in your system PATH for this task to work.'));
-        return;
       }
 
       // support error callback
       if (code !== 0) {
-        cb(new gutil.PluginError(PLUGIN_NAME, stdout || 'Compass failed', {fileName: file.path}));
-        return;
+        return cb(new gutil.PluginError(PLUGIN_NAME, stdout || 'Compass failed', {fileName: file.path}));
       }
 
       // excute callback
