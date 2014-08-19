@@ -31,7 +31,7 @@
   "homepage": "https://github.com/appleboy/gulp-compass",
   "dependencies": {
     "gulp-util": "^3.0.0",
-    "through2": "^0.5.1",
+    "through2": "^0.6.1",
     "which": "^1.0.5"
   },
   "devDependencies": {
