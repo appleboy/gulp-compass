@@ -20,7 +20,7 @@ module.exports = function(opt) {
     }
 
     if (path.basename(file.path)[0] === '_') {
-      return cb(null, file);
+      return cb();
     }
 
     compass(file.path, opt, function(code, stdout, stderr, path) {
