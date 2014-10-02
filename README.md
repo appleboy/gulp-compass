@@ -248,9 +248,9 @@ PS. Current compass `0.12.4` version  doesn't support `--sourcemap` flag, please
 ## Running tests
 
 ```
-$ gem install sass --version "=3.2.19"
-$ gem install compass --version "=0.12.6"
-$ gem install susy --version "=1.0.9"
+$ gem install sass
+$ gem install compass
+$ gem install susy
 $ gem install modular-scale
 $ npm test
 ```
