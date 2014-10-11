@@ -121,11 +121,40 @@ gulp.task('compass', function() {
     sass: 'app/assets/sass',
     image: 'app/assets/images'
   }))
-  .on('error', function(err) {
+  .on('error', function(error) {
     // Would like to catch the error here
+    console.log(error);
+    this.emit('end');
   })
   .pipe(minifyCSS())
   .pipe(gulp.dest('app/assets/temp'));
+});
+```
+
+`gulp-compass` with [gulp-plumber](https://github.com/floatdrop/gulp-plumber)
+
+```javascript
+var compass = require('gulp-compass'),
+  plumber = require('gulp-plumber'),
+  minifyCSS = require('gulp-minify-css');
+
+gulp.task('compass', function() {
+  gulp.src('./src/*.scss')
+    .pipe(plumber({
+      errorHandler: function (error) {
+        console.log(error.message);
+        this.emit('end');
+    }}))
+    .pipe(compass({
+      css: 'app/assets/css',
+      sass: 'app/assets/sass',
+      image: 'app/assets/images'
+    }))
+    .on('error', function(err) {
+      // Would like to catch the error here
+    })
+    .pipe(minifyCSS())
+    .pipe(gulp.dest('app/assets/temp'));
 });
 ```
 
