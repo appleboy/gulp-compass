@@ -43,12 +43,12 @@ var compass = require('gulp-compass');
 
 gulp.task('compass', function() {
   gulp.src('./src/*.scss')
-  .pipe(compass({
-    config_file: './config.rb',
-    css: 'stylesheets',
-    sass: 'sass'
-  }))
-  .pipe(gulp.dest('app/assets/temp'));
+    .pipe(compass({
+      config_file: './config.rb',
+      css: 'stylesheets',
+      sass: 'sass'
+    }))
+    .pipe(gulp.dest('app/assets/temp'));
 });
 ```
 
@@ -62,12 +62,12 @@ var compass = require('gulp-compass'),
 
 gulp.task('compass', function() {
   gulp.src('./src/*.scss')
-  .pipe(compass({
-    project: path.join(__dirname, 'assets'),
-    css: 'css',
-    sass: 'sass'
-  }))
-  .pipe(gulp.dest('app/assets/temp'));
+    .pipe(compass({
+      project: path.join(__dirname, 'assets'),
+      css: 'css',
+      sass: 'sass'
+    }))
+    .pipe(gulp.dest('app/assets/temp'));
 });
 ```
 
@@ -79,13 +79,13 @@ var compass = require('gulp-compass'),
 
 gulp.task('compass', function() {
   gulp.src('./src/*.scss')
-  .pipe(compass({
-    css: 'app/assets/css',
-    sass: 'app/assets/sass',
-    image: 'app/assets/images'
-  }))
-  .pipe(minifyCSS())
-  .pipe(gulp.dest('app/assets/temp'));
+    .pipe(compass({
+      css: 'app/assets/css',
+      sass: 'app/assets/sass',
+      image: 'app/assets/images'
+    }))
+    .pipe(minifyCSS())
+    .pipe(gulp.dest('app/assets/temp'));
 });
 ```
 
@@ -97,14 +97,14 @@ var compass = require('gulp-compass'),
 
 gulp.task('compass', function() {
   gulp.src('./src/*.scss')
-  .pipe(compass({
-    css: 'app/assets/css',
-    sass: 'app/assets/sass',
-    image: 'app/assets/images',
-    require: ['susy', 'modular-scale']
-  }))
-  .pipe(minifyCSS())
-  .pipe(gulp.dest('app/assets/temp'));
+    .pipe(compass({
+      css: 'app/assets/css',
+      sass: 'app/assets/sass',
+      image: 'app/assets/images',
+      require: ['susy', 'modular-scale']
+    }))
+    .pipe(minifyCSS())
+    .pipe(gulp.dest('app/assets/temp'));
 });
 ```
 
@@ -116,18 +116,18 @@ var compass = require('gulp-compass'),
 
 gulp.task('compass', function() {
   gulp.src('./src/*.scss')
-  .pipe(compass({
-    css: 'app/assets/css',
-    sass: 'app/assets/sass',
-    image: 'app/assets/images'
-  }))
-  .on('error', function(error) {
-    // Would like to catch the error here
-    console.log(error);
-    this.emit('end');
-  })
-  .pipe(minifyCSS())
-  .pipe(gulp.dest('app/assets/temp'));
+    .pipe(compass({
+      css: 'app/assets/css',
+      sass: 'app/assets/sass',
+      image: 'app/assets/images'
+    }))
+    .on('error', function(error) {
+      // Would like to catch the error here
+      console.log(error);
+      this.emit('end');
+    })
+    .pipe(minifyCSS())
+    .pipe(gulp.dest('app/assets/temp'));
 });
 ```
 
