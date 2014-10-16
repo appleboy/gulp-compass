@@ -23,7 +23,7 @@ module.exports = function(opt) {
       return cb();
     }
 
-    compass(file.path, opt, function(code, stdout, stderr, path) {
+    compass(file.path, opt, function(code, stdout, stderr, pathToCss) {
       if (code === 127) {
         return cb(new gutil.PluginError(PLUGIN_NAME, 'You need to have Ruby and Compass installed ' +
           'and in your system PATH for this task to work.'));
@@ -34,18 +34,24 @@ module.exports = function(opt) {
         return cb(new gutil.PluginError(PLUGIN_NAME, stdout || 'Compass failed', {fileName: file.path}));
       }
 
-      // excute callback
-      var pathToCss = gutil.replaceExtension(path, '.css'),
-        contents = fs.readFileSync(pathToCss);
 
-      // Fix garbled output.
-      if (!(contents instanceof Buffer)) {
-        contents = new Buffer(contents);
-      }
+      file.contents = null;
+      file.path = pathToCss;
 
-      file.path = gutil.replaceExtension(file.path, '.css');
-      file.contents = contents;
-      cb(null, file);
+      fs.readFile(pathToCss, function (err, contents) {
+        if (err) {
+          return cb(new gutil.PluginError(PLUGIN_NAME, 'Failure reading in the CSS output file'));
+        }
+
+        // Fix garbled output.
+        if (!(contents instanceof Buffer)) {
+          contents = new Buffer(contents);
+        }
+
+        file.contents = contents;
+        return cb(null, file);
+
+      });
     });
   };
 
