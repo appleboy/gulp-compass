@@ -284,7 +284,7 @@ PS. Current compass `0.12.4` version  doesn't support `--sourcemap` flag, please
 
 **default:** false
 
-**description:** GENERATED_IMAGES_PATH.
+**description:** GENERATED_IMAGES_PATH. Support `--generated-images-path` parameter.
 
 ## Running tests
 
