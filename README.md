@@ -171,7 +171,7 @@ One of: nested, expanded, compact, or compressed.
 
 #### comments
 
-**default:** true
+**default:** false
 
 **description:** Show line comments or not.
 
