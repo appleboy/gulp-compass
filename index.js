@@ -36,7 +36,7 @@ module.exports = function(opt) {
 
 
       file.contents = null;
-      file.path = pathToCss;
+      file.path = gutil.replaceExtension(file.path, '.css');
 
       fs.readFile(pathToCss, function (err, contents) {
         if (err) {
@@ -50,7 +50,6 @@ module.exports = function(opt) {
 
         file.contents = contents;
         return cb(null, file);
-
       });
     });
   };
