@@ -274,6 +274,18 @@ PS. Current compass `0.12.4` version  doesn't support `--sourcemap` flag, please
 
 **description:** The environment mode can also be `development` or `production`.
 
+#### http_path
+
+**default:** false
+
+**description:** Set this to the root of your project when deployed.
+
+#### generated_images_path
+
+**default:** false
+
+**description:** GENERATED_IMAGES_PATH.
+
 ## Running tests
 
 ```
