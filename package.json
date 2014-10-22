@@ -43,8 +43,7 @@
     "jshint-stylish": "^1.0.0",
     "map-stream": "^0.1.0",
     "mocha": "^1.21.4",
-    "should": "^4.0.4",
-    "which": "^1.0.5"
+    "should": "^4.0.4"
   },
   "engines": {
     "node": ">=0.10.0"
