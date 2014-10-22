@@ -257,7 +257,7 @@ describe('gulp-compass plugin', function() {
       name_list.sort().should.eql(expected);
     });
 
-    it('should translate ./ paths to absolute paths', function(done) {
+    it('should normalize ./ paths in sass and css options', function(done) {
       compass(path.join(__dirname, 'sass/simple.sass'), {
         project: __dirname,
         sass: './sass',
