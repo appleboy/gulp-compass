@@ -257,5 +257,18 @@ describe('gulp-compass plugin', function() {
       name_list.sort().should.eql(expected);
     });
 
+    it('should translate ./ paths to absolute paths', function(done) {
+      compass(path.join(__dirname, 'sass/simple.sass'), {
+        project: __dirname,
+        sass: './sass',
+        css: './css',
+        logging: true
+      }, function(code, stdout, stderr) {
+        code.should.be.equal(0);
+        stderr.should.be.empty;
+        done();
+      });
+    });
+
   });
 });
