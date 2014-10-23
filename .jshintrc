@@ -17,6 +17,7 @@
   "strict": true,
   "trailing": true,
   "smarttabs": true,
+  "expr": true, // http://stackoverflow.com/questions/13815569/how-to-get-should-be-false-syntax-pass-jslint
   "globals": {
     /* MOCHA */
     "describe"   : false,
