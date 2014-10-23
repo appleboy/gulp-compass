@@ -1,6 +1,6 @@
 {
   "name": "gulp-compass",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Compile Compass files",
   "main": "index.js",
   "repository": {
