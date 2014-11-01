@@ -16,13 +16,12 @@
   "camelcase": false,
   "expr": true, // http://stackoverflow.com/questions/13815569/how-to-get-should-be-false-syntax-pass-jslint
   "globals": {
-    /* MOCHA */
-    "describe"   : false,
-    "it"     : false,
-    "before"   : false,
-    "beforeEach" : false,
-    "after"    : false,
-    "afterEach"  : false,
-    "should"   : false
+    "describe": false,
+    "it": false,
+    "before": false,
+    "beforeEach": false,
+    "after": false,
+    "afterEach": false,
+    "should": false
   }
 }
