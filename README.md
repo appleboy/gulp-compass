@@ -253,6 +253,12 @@ One of: nested, expanded, compact, or compressed.
 
 PS. Current compass `0.12.4` version  doesn't support `--sourcemap` flag, please update sass and compass as the following version.
 
+#### command
+
+**default:** compile
+
+**description:** The compass command to execute. This makes it possible to e.g. run `compass watch`.
+
 ```
 * sass (3.3.3)
 * compass (1.0.0.alpha.19)
