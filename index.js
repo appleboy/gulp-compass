@@ -34,9 +34,9 @@ module.exports = function(opt) {
         return cb(new gutil.PluginError(PLUGIN_NAME, stdout || 'Compass failed', {fileName: file.path}));
       }
 
-
+      var relPathToSass = path.relative(path.resolve(opt.project, opt.sass), file.path);
       file.contents = null;
-      file.path = path.join(opt.css || path.dirname(file.path), gutil.replaceExtension(path.basename(file.path), '.css'));
+      file.path = path.resolve(opt.css, gutil.replaceExtension(relPathToSass, '.css'));
 
       fs.readFile(pathToCss, function (err, contents) {
         if (err) {
