@@ -36,7 +36,7 @@ module.exports = function(opt) {
 
 
       file.contents = null;
-      file.path = gutil.replaceExtension(file.path, '.css');
+      file.path = path.join(opt.css || path.dirname(file.path), gutil.replaceExtension(path.basename(file.path), '.css'));
 
       fs.readFile(pathToCss, function (err, contents) {
         if (err) {
