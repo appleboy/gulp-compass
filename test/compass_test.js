@@ -276,10 +276,10 @@ describe('gulp-compass plugin', function() {
         sass: __dirname + '/sass',
         css: __dirname + '/css',
         logging: true
-		  }, function(code, stdout, stderr, new_path) {
+      }, function(code, stdout, stderr, new_path) {
         code.should.be.equal(0);
         stderr.should.be.empty;
-	new_path.should.equal(__dirname + '/css/simple2.css');
+        new_path.should.equal(__dirname + '/css/simple2.css');
         done();
       });
     });
