@@ -270,5 +270,19 @@ describe('gulp-compass plugin', function() {
       });
     });
 
+    it('should allow absolute paths in sass and css options', function(done) {
+      compass(path.join(__dirname, 'sass/simple2.sass'), {
+        project: __dirname,
+        sass: __dirname + '/sass',
+        css: __dirname + '/css',
+        logging: true
+		  }, function(code, stdout, stderr, new_path) {
+        code.should.be.equal(0);
+        stderr.should.be.empty;
+	new_path.should.equal(__dirname + '/css/simple2.css');
+        done();
+      });
+    });
+
   });
 });
