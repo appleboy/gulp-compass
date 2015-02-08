@@ -284,5 +284,21 @@ describe('gulp-compass plugin', function() {
       });
     });
 
+    it('import a directory’s contents', function(done) {
+      compass(path.join(__dirname, 'sass/partial.scss'), {
+        project: __dirname,
+        config_file: path.join(__dirname, 'config.rb'),
+        style: 'compressed',
+        css: 'css',
+        sass: 'sass',
+        logging: false
+      }, function(code, stdout, stderr, new_path) {
+        code.should.be.equal(0);
+        stderr.should.be.empty;
+        new_path.should.equal(__dirname + '/css/partial.css');
+        done();
+      });
+    });
+
   });
 });
