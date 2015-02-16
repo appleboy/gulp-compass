@@ -2,6 +2,7 @@
 
 var gulp = require('gulp'),
   $ = require('gulp-load-plugins')(),
+  del = require('del'),
   lib = ['**/*.js', '!node_modules/**/*', '!coverage/**/*'];
 
 
@@ -9,6 +10,10 @@ gulp.task('coverage', ['clean'], function(){
   return gulp.src(lib)
     .pipe($.istanbul())
     .pipe($.istanbul.hookRequire());
+});
+
+gulp.task('coverage:clean', function(cb){
+  del(['coverage/**/*'], cb);
 });
 
 gulp.task('jshint', function () {
@@ -24,6 +29,6 @@ gulp.task('mocha', ['coverage'], function () {
     .pipe($.istanbul.writeReports());
 });
 
-gulp.task('clean', require('del').bind(null, ['test/css', 'coverage']));
+gulp.task('clean', del.bind(null, ['test/css', 'coverage']));
 
-gulp.task('default', ['jshint', 'mocha']);
+gulp.task('default', ['mocha', 'jshint']);
