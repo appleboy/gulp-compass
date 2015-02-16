@@ -35,9 +35,12 @@
     "which": "^1.0.8"
   },
   "devDependencies": {
+    "coveralls": "^2.11.2",
     "del": "^1.1.1",
     "gulp": "^3.8.10",
+    "gulp-istanbul": "^0.6.0",
     "gulp-jshint": "^1.9.2",
+    "gulp-load-plugins": "^0.8.0",
     "gulp-mocha": "^2.0.0",
     "iconv-lite": "^0.4.7",
     "jshint-stylish": "^1.0.0",

@@ -13,3 +13,9 @@ before_install:
   - gem install sass-globbing
   - gem install susy
   - gem install modular-scale
+
+script:
+  - npm test
+
+after_script:
+  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js

@@ -1,24 +1,29 @@
 'use strict';
 
-/**
-* Plugins load
-*/
 var gulp = require('gulp'),
-  jshint = require('gulp-jshint'),
-  mocha = require('gulp-mocha'),
-  reporter = require('jshint-stylish');
+  $ = require('gulp-load-plugins')(),
+  lib = ['**/*.js', '!node_modules/**/*', '!coverage/**/*'];
 
-gulp.task('hint', function () {
-  return gulp.src(['**/*.js', '!node_modules/**/*'])
-    .pipe(jshint())
-    .pipe(jshint.reporter(reporter));
+
+gulp.task('coverage', ['clean'], function(){
+  return gulp.src(lib)
+    .pipe($.istanbul())
+    .pipe($.istanbul.hookRequire());
 });
 
-gulp.task('mocha', ['clean'], function () {
+gulp.task('jshint', function () {
+  return gulp.src(lib)
+    .pipe($.jshint())
+    .pipe($.jshint.reporter('jshint-stylish'))
+    .pipe($.jshint.reporter('fail'));
+});
+
+gulp.task('mocha', ['coverage'], function () {
   return gulp.src('test/*_test.js')
-    .pipe(mocha({reporter: 'spec'}));
+    .pipe($.mocha({reporter: 'spec'}))
+    .pipe($.istanbul.writeReports());
 });
 
-gulp.task('clean', require('del').bind(null, ['test/css']));
+gulp.task('clean', require('del').bind(null, ['test/css', 'coverage']));
 
-gulp.task('default', ['hint', 'mocha']);
+gulp.task('default', ['jshint', 'mocha']);
