@@ -23,12 +23,22 @@ gulp.task('jshint', function () {
     .pipe($.jshint.reporter('fail'));
 });
 
+function mochaStream(){
+  return gulp.src('test/*_test.js', {read: false})
+    .pipe($.mocha({
+      reporter: 'spec'
+    }));
+}
+
 gulp.task('mocha', ['coverage'], function () {
-  return gulp.src('test/*_test.js')
-    .pipe($.mocha({reporter: 'spec'}))
+  return mochaStream()
     .pipe($.istanbul.writeReports());
 });
 
-gulp.task('clean', del.bind(null, ['test/css', 'coverage']));
+gulp.task('mocha:nocov', function(){
+  return mochaStream();
+});
+
+gulp.task('clean', del.bind(null, ['test/css', 'coverage/**/*']));
 
 gulp.task('default', ['mocha', 'jshint']);
