@@ -2,7 +2,7 @@
   "name": "gulp-compass",
   "version": "2.0.3",
   "description": "Compile Compass files",
-  "main": "index.js",
+  "main": "lib",
   "repository": {
     "type": "git",
     "url": "git://github.com/appleboy/gulp-compass.git"

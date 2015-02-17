@@ -12,10 +12,6 @@ gulp.task('coverage', ['clean'], function(){
     .pipe($.istanbul.hookRequire());
 });
 
-gulp.task('coverage:clean', function(cb){
-  del(['coverage/**/*'], cb);
-});
-
 gulp.task('jshint', function () {
   return gulp.src(lib)
     .pipe($.jshint())
