@@ -244,6 +244,21 @@ describe('gulp-compass plugin', function() {
         done();
       });
     });
+
+    it('test error content', function(done) {
+      compass(path.join(__dirname, 'sass/error.scss'), {
+        project: __dirname,
+        config_file: path.join(__dirname, 'config.rb'),
+        style: 'compressed',
+        css: 'css',
+        sass: 'sass',
+        logging: true
+      }, function(code, stdout, stderr, new_path, options) {
+        code.should.be.equal(1);
+        stderr.should.not.be.empty;
+        done();
+      });
+    });
   });
 
   describe('compass helper', function() {
