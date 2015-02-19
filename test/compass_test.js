@@ -231,9 +231,11 @@ describe('gulp-compass plugin', function() {
         style: 'compressed',
         css: 'css',
         sass: 'sass',
-        logging: false
-      }, function(code, stdout, stderr, new_path) {
+        logging: false,
+        debug: true
+      }, function(code, stdout, stderr, new_path, options) {
         code.should.be.equal(0);
+        options.debug.should.be.ok;
         stderr.should.be.empty;
         new_path.should.equal(__dirname + '/css/partial.css');
         actual = read_file(path.join(__dirname, 'css/partial.css'));
