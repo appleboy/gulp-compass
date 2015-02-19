@@ -259,6 +259,28 @@ describe('gulp-compass plugin', function() {
         done();
       });
     });
+
+    it('test bundle exec command', function(done) {
+      compass(path.join(__dirname, 'sass/compile.scss'), {
+        project: __dirname,
+        style: 'compressed',
+        css: 'css',
+        sass: 'sass',
+        logging: false,
+        debug: true,
+        bundle_exec: true
+      }, function(code, stdout, stderr, new_path, options) {
+        code.should.be.equal(0);
+        options.debug.should.be.ok;
+        stderr.should.be.empty;
+        new_path.should.equal(__dirname + '/css/compile.css');
+        actual = read_file(path.join(__dirname, 'css/compile.css'));
+        expected = read_file(path.join(__dirname, 'expected/compile.css'));
+        actual.should.equal(expected);
+        done();
+      });
+    });
+
   });
 
   describe('compass helper', function() {
