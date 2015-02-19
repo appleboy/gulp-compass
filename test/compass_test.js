@@ -1,6 +1,7 @@
 'use strict';
 var fs = require('fs'),
   compass = require('../lib/compass'),
+  helpers = require('../lib/helpers'),
   path = require('path'),
   iconv = require('iconv-lite');
 
@@ -23,7 +24,7 @@ var read_file = function(filepath) {
 };
 
 describe('gulp-compass plugin', function() {
-  describe('compass()', function() {
+  describe('compass command', function() {
     var actual, expected;
     this.timeout(60000);
 
@@ -241,6 +242,14 @@ describe('gulp-compass plugin', function() {
         done();
       });
     });
+  });
 
+  describe('compass helper', function() {
+    this.timeout(60000);
+    it('test helper isArray', function(done) {
+      //helpers.isArray(['test']).should.be.ok;
+      //helpers.isArray('test').should.not.be.ok;
+      done();
+    });
   });
 });

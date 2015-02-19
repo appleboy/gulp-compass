@@ -3,7 +3,7 @@
 var gulp = require('gulp'),
   $ = require('gulp-load-plugins')(),
   del = require('del'),
-  lib = ['**/*.js', '!node_modules/**/*', '!coverage/**/*'];
+  lib = ['**/*.js', '!test/**/*', '!node_modules/**/*', '!coverage/**/*'];
 
 
 gulp.task('coverage', ['clean'], function(){
