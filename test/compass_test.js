@@ -247,8 +247,20 @@ describe('gulp-compass plugin', function() {
   describe('compass helper', function() {
     this.timeout(60000);
     it('test helper isArray', function(done) {
-      //helpers.isArray(['test']).should.be.ok;
-      //helpers.isArray('test').should.not.be.ok;
+      helpers.isArray(['test']).should.be.ok;
+      helpers.isArray('test').should.not.be.ok;
+      done();
+    });
+
+    it('test helper command', function(done) {
+      helpers.command('compass').should.not.be.empty;
+      helpers.command('compass_test').should.not.be.ok;
+      helpers.command('compass_test', function(code, stdout, stderr, new_path) {
+        code.should.equal(127);
+        stdout.should.be.empty;
+        stderr.should.not.be.empty;
+        new_path.should.be.empty;
+      });
       done();
     });
   });
