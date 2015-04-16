@@ -251,11 +251,11 @@ One of: nested, expanded, compact, or compressed.
 
 **description:** Generate standard JSON source maps.
 
-PS. Current compass `0.12.4` version  doesn't support `--sourcemap` flag, please update sass and compass as the following version.
+PS. Past compass versions (prior to 1.0.0) do not support `--sourcemap` flag, please update sass and compass as the following version.
 
 ```
 * sass (3.3.3)
-* compass (1.0.0.alpha.19)
+* compass (1.0.1)
 ```
 
 #### time
