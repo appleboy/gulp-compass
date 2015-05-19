@@ -19,12 +19,7 @@
     "style"
   ],
   "author": "Bo-Yi Wu",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/appleboy/gulp-compass/blob/master/LICENSE"
-    }
-  ],
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/appleboy/gulp-compass/issues"
   },
