@@ -38,9 +38,30 @@ describe('gulp-compass plugin', function() {
       }, function(code, stdout, stderr, new_path) {
         code.should.be.equal(0);
         stderr.should.be.empty;
-        new_path.should.equal(__dirname + '/css/compile.css');
+        new_path.should.eql([__dirname + '/css/compile.css']);
         actual = read_file(path.join(__dirname, 'css/compile.css'));
         expected = read_file(path.join(__dirname, 'expected/compile.css'));
+        actual.should.equal(expected);
+        done();
+      });
+    });
+
+    it('compile multiple scss to multiple css', function(done) {
+      compass([path.join(__dirname, 'sass/compile.scss'), path.join(__dirname, 'sass/simple.sass')], {
+        project: __dirname,
+        style: 'compressed',
+        css: 'css',
+        sass: 'sass',
+        logging: false
+      }, function(code, stdout, stderr, new_path) {
+        code.should.be.equal(0);
+        stderr.should.be.empty;
+        new_path.should.eql([__dirname + '/css/compile.css', __dirname + '/css/simple.css']);
+        actual = read_file(path.join(__dirname, 'css/compile.css'));
+        expected = read_file(path.join(__dirname, 'expected/compile.css'));
+        actual.should.equal(expected);
+        actual = read_file(path.join(__dirname, 'css/simple.css'));
+        expected = read_file(path.join(__dirname, 'expected/simple.css'));
         actual.should.equal(expected);
         done();
       });
@@ -56,7 +77,7 @@ describe('gulp-compass plugin', function() {
       }, function(code, stdout, stderr, new_path){
         code.should.be.equal(0);
         stderr.should.be.empty;
-        new_path.should.equal(__dirname + '/css/simple.css');
+        new_path.should.eql([__dirname + '/css/simple.css']);
         actual = read_file(path.join(__dirname, 'css/simple.css'));
         expected = read_file(path.join(__dirname, 'expected/simple.css'));
         actual.should.equal(expected);
@@ -71,7 +92,7 @@ describe('gulp-compass plugin', function() {
       }, function(code, stdout, stderr, new_path){
         code.should.be.equal(0);
         stderr.should.be.empty;
-        new_path.should.equal(__dirname + '/css/base/compile.css');
+        new_path.should.eql([__dirname + '/css/base/compile.css']);
         actual = read_file(path.join(__dirname, 'css/base/compile.css'));
         expected = read_file(path.join(__dirname, 'expected/compile.css'));
         actual.should.equal(expected);
@@ -87,7 +108,7 @@ describe('gulp-compass plugin', function() {
       }, function(code, stdout, stderr, new_path){
         code.should.be.equal(0);
         stderr.should.be.empty;
-        new_path.should.equal(__dirname + '/css/import.css');
+        new_path.should.eql([__dirname + '/css/import.css']);
         actual = read_file(path.join(__dirname, 'css/import.css'));
         expected = read_file(path.join(__dirname, 'expected/import.css'));
         actual.should.equal(expected);
@@ -103,7 +124,7 @@ describe('gulp-compass plugin', function() {
       }, function(code, stdout, stderr, new_path){
         code.should.be.equal(0);
         stderr.should.be.empty;
-        new_path.should.equal(__dirname + '/css/import2.css');
+        new_path.should.eql([__dirname + '/css/import2.css']);
         actual = read_file(path.join(__dirname, 'css/import2.css'));
         expected = read_file(path.join(__dirname, 'expected/import2.css'));
         actual.should.equal(expected);
@@ -119,7 +140,7 @@ describe('gulp-compass plugin', function() {
       }, function(code, stdout, stderr, new_path){
         code.should.be.equal(0);
         stderr.should.be.empty;
-        new_path.should.equal(__dirname + '/css/require.css');
+        new_path.should.eql([__dirname + '/css/require.css']);
         actual = read_file(path.join(__dirname, 'css/require.css'));
         expected = read_file(path.join(__dirname, 'expected/require.css'));
         actual.should.equal(expected);
@@ -138,7 +159,7 @@ describe('gulp-compass plugin', function() {
       }, function(code, stdout, stderr, new_path){
         code.should.be.equal(0);
         stderr.should.be.empty;
-        new_path.should.equal(__dirname + '/css/spriting.css');
+        new_path.should.eql([__dirname + '/css/spriting.css']);
         actual = read_file(path.join(__dirname, 'css/spriting.css'));
         expected = read_file(path.join(__dirname, 'expected/spriting.css'));
         actual.should.equal(expected);
@@ -154,7 +175,7 @@ describe('gulp-compass plugin', function() {
       }, function(code, stdout, stderr, new_path){
         code.should.be.equal(0);
         stderr.should.be.empty;
-        new_path.should.equal(__dirname + '/css/multiple-require.css');
+        new_path.should.eql([__dirname + '/css/multiple-require.css']);
         actual = read_file(path.join(__dirname, 'css/multiple-require.css'));
         expected = read_file(path.join(__dirname, 'expected/require.css'));
         actual.should.equal(expected);
@@ -170,7 +191,7 @@ describe('gulp-compass plugin', function() {
       }, function(code, stdout, stderr, new_path){
         code.should.be.equal(0);
         stderr.should.be.empty;
-        new_path.should.equal(__dirname + '/css/base/compile2.css');
+        new_path.should.eql([__dirname + '/css/base/compile2.css']);
         actual = read_file(path.join(__dirname, 'css/base/compile2.css'));
         expected = read_file(path.join(__dirname, 'expected/compile2.css'));
         actual.should.equal(expected);
@@ -186,7 +207,7 @@ describe('gulp-compass plugin', function() {
       }, function(code, stdout, stderr, new_path){
         code.should.be.equal(0);
         stderr.should.be.empty;
-        new_path.should.equal(__dirname + '/css/base/compile3.css');
+        new_path.should.eql([__dirname + '/css/base/compile3.css']);
         actual = read_file(path.join(__dirname, 'css/base/compile3.css'));
         expected = read_file(path.join(__dirname, 'expected/compile2.css'));
         actual.should.equal(expected);
@@ -203,7 +224,7 @@ describe('gulp-compass plugin', function() {
       }, function(code, stdout, stderr, new_path) {
         code.should.be.equal(0);
         stderr.should.be.empty;
-        new_path.should.equal(__dirname + '/css/simple.css');
+        new_path.should.eql([__dirname + '/css/simple.css']);
         actual = read_file(path.join(__dirname, 'css/simple.css'));
         expected = read_file(path.join(__dirname, 'expected/simple.css'));
         actual.should.equal(expected);
@@ -219,7 +240,7 @@ describe('gulp-compass plugin', function() {
         logging: true
       }, function(code, stdout, stderr, new_path) {
         stderr.should.be.empty;
-        new_path.should.equal(__dirname + '/css/simple2.css');
+        new_path.should.eql([__dirname + '/css/simple2.css']);
         done();
       });
     });
@@ -237,7 +258,7 @@ describe('gulp-compass plugin', function() {
         code.should.be.equal(0);
         options.debug.should.be.ok;
         stderr.should.be.empty;
-        new_path.should.equal(__dirname + '/css/partial.css');
+        new_path.should.eql([__dirname + '/css/partial.css']);
         actual = read_file(path.join(__dirname, 'css/partial.css'));
         expected = read_file(path.join(__dirname, 'expected/partial.css'));
         actual.should.equal(expected);
@@ -273,7 +294,7 @@ describe('gulp-compass plugin', function() {
         code.should.be.equal(0);
         options.debug.should.be.ok;
         stderr.should.be.empty;
-        new_path.should.equal(__dirname + '/css/compile.css');
+        new_path.should.eql([__dirname + '/css/compile.css']);
         actual = read_file(path.join(__dirname, 'css/compile.css'));
         expected = read_file(path.join(__dirname, 'expected/compile.css'));
         actual.should.equal(expected);
