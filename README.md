@@ -158,6 +158,23 @@ gulp.task('compass', function() {
 });
 ```
 
+### Usage with gulp-watch
+
+```javascript
+var compass = require('gulp-compass'),
+  watch = require('gulp-watch');
+
+gulp.task('compass', function() {
+  return watch('./src/*.scss')
+    .pipe(compass.singleFile({
+      css: 'app/assets/css',
+      sass: 'app/assets/sass',
+      image: 'app/assets/images'
+    }))
+    .pipe(gulp.dest('app/assets/temp'));
+});
+```
+
 ## Configuration
 
 ### Configuration Options
