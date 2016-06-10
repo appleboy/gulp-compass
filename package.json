@@ -33,7 +33,7 @@
     "coveralls": "^2.11.2",
     "del": "^1.1.1",
     "gulp": "^3.8.10",
-    "gulp-istanbul": "^0.10.4",
+    "gulp-istanbul": "^1.0.0",
     "gulp-jscs": "^1.6.0",
     "gulp-jshint": "^2.0.1",
     "gulp-load-plugins": "^1.2.1",
