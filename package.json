@@ -37,7 +37,7 @@
     "gulp-jscs": "^4.0.0",
     "gulp-jshint": "^2.0.1",
     "gulp-load-plugins": "^1.2.1",
-    "gulp-mocha": "^2.0.0",
+    "gulp-mocha": "^3.0.0",
     "iconv-lite": "^0.4.7",
     "jshint-reporter-jscs": "^0.1.0",
     "map-stream": "0.0.5",
