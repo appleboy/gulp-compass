@@ -45,7 +45,7 @@
     "should": "^11.0.0"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">= 4"
   },
   "scripts": {
     "test": "gulp"
